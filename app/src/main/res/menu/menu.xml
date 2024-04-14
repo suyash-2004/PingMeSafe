@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+
+
+        <group
+            android:checkableBehavior="single">
+            <item
+                android:id="@+id/itemMap"
+                android:icon="@drawable/map_foreground"
+                android:title="Map"/>
+
+            <item
+                android:id="@+id/itemBecomeAware"
+                android:icon="@drawable/person_foreground"
+                android:title="@string/becomeaware"/>
+
+            <item
+                android:id="@+id/itemRegisterDisasterShelter"
+                android:icon="@drawable/person_foreground"
+                android:title="Register a Disaster Shelter"/>
+
+            <item
+                android:id="@+id/item3"
+                android:icon="@drawable/person_foreground"
+                android:title="item3"/>
+
+            <item
+                android:id="@+id/item4"
+                android:icon="@drawable/person_foreground"
+                android:title="item4"/>
+
+            <item android:id="@+id/itemContribute"
+                android:icon="@drawable/person_foreground"
+                android:title="Contribute"/>
+
+            <item android:id="@+id/itemAboutUs"
+                android:icon="@drawable/person_foreground"
+                android:title="About us"/>
+        </group>
+
+
+
+
+
+
+
+</menu>

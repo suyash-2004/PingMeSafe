@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/swipable_menu_bkg_curved"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    app:behavior_peekHeight="@dimen/_118sdp"
+    android:id="@+id/layoutBottomSheet">
+
+    <ImageView
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_5sdp"
+        android:src="@drawable/line_rounded"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/layoutEmergency"
+        android:background="@drawable/emergency_bkg_rectangle"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/imageSOSEmergency"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/sos_foreground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textEmergency"
+            android:contentDescription="@string/app_name"
+            android:layout_marginStart="@dimen/_6sdp"/>
+        <TextView
+            android:id="@+id/textEmergency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emergency"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/imageSOSEmergency"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="@dimen/_8sdp"/>
+
+        <ImageView
+            android:id="@+id/imageArrowEmergency"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/arrow_right"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/layoutDisasterRecovery"
+        android:background="@drawable/disaster_recovery_bkg_rectangle"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/imageSOSDisasterRecovery"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/disaster_recovery"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textDisasterRecovery"
+            android:contentDescription="@string/app_name"
+            android:scaleY="0.6"
+            android:scaleX="0.6" />
+        <TextView
+            android:id="@+id/textDisasterRecovery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/disasterrecovery"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/imageSOSDisasterRecovery"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageArrowDisasterRecovery"/>
+
+        <ImageView
+            android:id="@+id/imageArrowDisasterRecovery"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/arrow_right"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/layoutPrepareForDisaster"
+        android:background="@drawable/disaster_recovery_bkg_rectangle"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/_20sdp">
+
+        <ImageView
+            android:id="@+id/imageSOSPrepareForDisaster"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/prepare_fot_disaster_foreground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textPrepareForDisaster"
+            android:contentDescription="@string/app_name"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:scaleX="1.2"
+            android:scaleY="1.2"/>
+
+        <TextView
+            android:id="@+id/textPrepareForDisaster"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prepare_for_disaster"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/imageSOSPrepareForDisaster"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageArrowPrepareForDisaster"
+            android:layout_marginStart="@dimen/_5sdp"/>
+
+        <ImageView
+            android:id="@+id/imageArrowPrepareForDisaster"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@drawable/arrow_right"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

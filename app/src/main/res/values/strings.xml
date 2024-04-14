@@ -1,0 +1,31 @@
+<resources>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <string name="app_name">PingMeSafe</string>
+    <string name="login_to_your_account">Login to your Account</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="or_sign_in_with_email">------------- or Sign in with Email -------------</string>
+    <string name="email">Email</string>
+    <string name="passsword">Passsword</string>
+    <string name="mail_abc_com">mail@abc.com</string>
+    <string name="passwordHint">**************</string>
+    <string name="new_to_pingmesafe">New to PingMeSafe?</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="emergency">EMERGENCY</string>
+    <string name="disasterrecovery">Disaster Recovery</string>
+    <string name="prepare_for_disaster">Prepare For Disaster</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu">Menu</string>
+    <string name="becomeaware">BecomeAware</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="OpenDrawer">open navigation drawer</string>
+    <string name="CloseDrawer">close navigation drawer</string>
+    <string name="pingmesafe">PingMeSafe</string>
+    <string name="toggle_drawer">Toggle Drawer</string>
+
+</resources>
