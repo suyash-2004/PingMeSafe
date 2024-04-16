@@ -14,8 +14,7 @@
         android:layout_height="@dimen/_5sdp"
         android:src="@drawable/line_rounded"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_20sdp"
-        />
+        android:layout_marginTop="@dimen/_20sdp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/_300sdp"

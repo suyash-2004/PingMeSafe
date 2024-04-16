@@ -27,5 +27,11 @@
     <string name="CloseDrawer">close navigation drawer</string>
     <string name="pingmesafe">PingMeSafe</string>
     <string name="toggle_drawer">Toggle Drawer</string>
+    <string name="map">Map</string>
+    <string name="register_a_disaster_shelter">Register a Disaster Shelter</string>
+    <string name="contribute">Contribute</string>
+    <string name="about_us">About us</string>
+    <string name="emergency_contacts">Emergency Contacts</string>
+    <string name="register_a_shelter">Register a Shelter</string>
 
 </resources>

@@ -10,35 +10,53 @@
             <item
                 android:id="@+id/itemMap"
                 android:icon="@drawable/map_foreground"
-                android:title="Map"/>
+                android:title="@string/map"
+                android:actionLayout="@layout/space_layout" />
+        </group>
 
+
+        <group
+            android:checkableBehavior="single">
             <item
                 android:id="@+id/itemBecomeAware"
                 android:icon="@drawable/person_foreground"
-                android:title="@string/becomeaware"/>
+                android:title="@string/becomeaware"
+                android:actionLayout="@layout/space_layout" />
+        </group>
 
+
+        <group
+            android:checkableBehavior="single">
             <item
-                android:id="@+id/itemRegisterDisasterShelter"
+                android:id="@+id/itemRegisterShelter"
                 android:icon="@drawable/person_foreground"
-                android:title="Register a Disaster Shelter"/>
+                android:title="@string/register_a_shelter"
+                android:actionLayout="@layout/space_layout" />
+        </group>
 
+        <group
+            android:checkableBehavior="single">
             <item
-                android:id="@+id/item3"
+                android:id="@+id/itemEmergencyContacts"
                 android:icon="@drawable/person_foreground"
-                android:title="item3"/>
+                android:title="@string/emergency_contacts"
+                android:actionLayout="@layout/space_layout" />
+        </group>
 
-            <item
-                android:id="@+id/item4"
-                android:icon="@drawable/person_foreground"
-                android:title="item4"/>
-
+        <group
+            android:checkableBehavior="single">
             <item android:id="@+id/itemContribute"
                 android:icon="@drawable/person_foreground"
-                android:title="Contribute"/>
+                android:title="@string/contribute"
+                android:actionLayout="@layout/space_layout" />
+        </group>
 
+        <group
+            android:checkableBehavior="single">
             <item android:id="@+id/itemAboutUs"
                 android:icon="@drawable/person_foreground"
-                android:title="About us"/>
+                android:title="@string/about_us"
+                android:actionLayout="@layout/space_layout" />
         </group>
 
 

@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.pingemesafe.R;
 import com.google.android.material.navigation.NavigationView;
@@ -47,11 +50,22 @@ public class HomeScreen_Activity extends AppCompatActivity {
                 loadFragment(new fragment_maps());
             } else if (id == R.id.itemBecomeAware) {
                 loadFragment(new fragment_Become_Aware());
-            } else if (id == R.id.itemRegisterDisasterShelter) {
+            } else if (id == R.id.itemRegisterShelter) {
                 loadFragment(new fragmentRegister_a_Disaster_shelter());
             }
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
+        });
+
+        initBottomSheet();
+    }
+
+    private void initBottomSheet() {
+        findViewById(R.id.layoutBottomSheet).findViewById(R.id.layoutEmergency).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeScreen_Activity.this,Emergency_activity.class));
+            }
         });
     }
 

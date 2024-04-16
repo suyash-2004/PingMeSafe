@@ -15,7 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         tools:targetApi="33">
-
+        <activity
+            android:name="com.example.pingmesafe.Disaster_Recovery_Activity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.pingmesafe.Emergency_activity"
+            android:exported="false"
+            android:theme="@style/homescreen_theme" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

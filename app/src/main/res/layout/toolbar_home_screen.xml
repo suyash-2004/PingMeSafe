@@ -14,12 +14,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/appbar">
+
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:id="@+id/toolbar"
             android:elevation="4dp"
             android:background="@drawable/toolbar_bkg">
+
+            <!-- Add profile picture ImageView here -->
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/profile_picture"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:src="@drawable/person_foreground"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@drawable/profile_pic_bkg"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -28,10 +41,10 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18ssp"
                 android:layout_gravity="center"/>
+
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
-
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
