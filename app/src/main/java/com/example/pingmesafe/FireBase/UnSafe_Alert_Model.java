@@ -2,19 +2,31 @@ package com.example.pingmesafe.FireBase;
 
 public class UnSafe_Alert_Model {
     double latitude, longitude;
-    String name,AlertMessage;
+    String name, alertMessage, deviceName, currentTime;
 
-    public UnSafe_Alert_Model(double latitude, double longitude, String name, String alertMessage) {
+    public UnSafe_Alert_Model(double latitude, double longitude, String name, String alertMessage, String deviceName, String currentTime) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;
-        AlertMessage = alertMessage;
+        this.alertMessage = alertMessage;
+        this.deviceName = deviceName;
+        this.currentTime = currentTime;
     }
 
-    public UnSafe_Alert_Model(double latitude, double longitude, String name) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.name = name;
+    public String getCurrentTime() {
+        return currentTime;
+    }
+
+    public void setCurrentTime(String currentTime) {
+        this.currentTime = currentTime;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 
     public UnSafe_Alert_Model() {
@@ -45,10 +57,10 @@ public class UnSafe_Alert_Model {
     }
 
     public String getAlertMessage() {
-        return AlertMessage;
+        return alertMessage;
     }
 
     public void setAlertMessage(String alertMessage) {
-        AlertMessage = alertMessage;
+        alertMessage = alertMessage;
     }
 }
