@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -45,6 +46,7 @@ dependencies {
     implementation ("androidx.room:room-runtime:2.6.1")
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.firebase:firebase-database:20.3.1")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
     annotationProcessor ("androidx.room:room-compiler:2.6.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")

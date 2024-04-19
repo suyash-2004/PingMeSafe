@@ -15,7 +15,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.pingemesafe.R;
+import com.example.pingmesafe.FireBase.UnSafe_Alert_Model;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
@@ -30,20 +33,25 @@ public class HomeScreen_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        //finding IDs from xml file
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
 
+        //setting Action Bar
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //setting Navigation View in Drawer layout
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        //loading default map fragment
         loadFragment(new fragment_maps());
 
+        //change fragments when navigation view items are clicked
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.itemMap) {
@@ -57,16 +65,17 @@ public class HomeScreen_Activity extends AppCompatActivity {
             return true;
         });
 
+        //initializing BottomSheet in Home Screen
         initBottomSheet();
+
+        //testing firebase integration(will be removed in further development)
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("unsafe alerts");
+        String alertID = databaseReference.push().getKey();
+        databaseReference.child(alertID).setValue(new UnSafe_Alert_Model(542.3,642.4,"Suyash","TestMessage"));
     }
 
     private void initBottomSheet() {
-        findViewById(R.id.layoutBottomSheet).findViewById(R.id.layoutEmergency).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeScreen_Activity.this,Emergency_activity.class));
-            }
-        });
+        findViewById(R.id.layoutBottomSheet).findViewById(R.id.layoutEmergency).setOnClickListener(v -> startActivity(new Intent(HomeScreen_Activity.this,Emergency_activity.class)));
     }
 
     private void loadFragment(Fragment fragment) {

@@ -33,5 +33,14 @@
     <string name="about_us">About us</string>
     <string name="emergency_contacts">Emergency Contacts</string>
     <string name="register_a_shelter">Register a Shelter</string>
+    <string name="locate_shelters">Locate Shelters</string>
+    <string name="training_amp_education"><![CDATA[Training & Education]]></string>
+    <string name="home_safety_tips">Home Safety Tips</string>
+    <string name="hazard_mitigation">Hazard Mitigation</string>
+    <string name="preparedness_videos">Preparedness Videos</string>
+    <string name="resources">Resources</string>
+    <string name="reportincident">ReportIncident</string>
+    <string name="donate">Donate</string>
+    <string name="are_you_sure_you_want_to_continue">Are you sure you want to \n\t\t\t\t\t\t\t\t\tcontinue?</string>
 
 </resources>

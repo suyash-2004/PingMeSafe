@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         tools:targetApi="33">
         <activity
+            android:name="com.example.pingmesafe.Activity_prepare_for_disaster"
+            android:exported="false" />
+        <activity
             android:name="com.example.pingmesafe.Disaster_Recovery_Activity"
             android:exported="false" />
         <activity

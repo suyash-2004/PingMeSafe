@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/sos_dialog_bkg">
+
+    <ImageView
+        android:id="@+id/txt_Message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sos_dialog_msg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleY="1.3"
+        android:scaleX="1.3"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginBottom="@dimen/_30sdp"/>
+
+    <TextView
+        android:id="@+id/textAreYouSure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/are_you_sure_you_want_to_continue"
+        app:layout_constraintTop_toBottomOf="@id/txt_Message"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_35sdp"
+        android:textSize="@dimen/_16ssp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/ubuntubold"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_YES"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_30sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textAreYouSure"
+        android:layout_margin="@dimen/_20sdp"
+        android:background="@drawable/sos_dialog_yes"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_Cancel"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_30sdp"
+        app:layout_constraintEnd_toStartOf="@id/btn_YES"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textAreYouSure"
+        android:layout_margin="@dimen/_20sdp"
+        android:background="@drawable/sos_dialog_cancel"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

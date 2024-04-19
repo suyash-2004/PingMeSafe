@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.pingmesafe.Emergency_activity"
-    android:background="@drawable/emergencybkg">
-
+    tools:context="com.example.pingmesafe.Activity_prepare_for_disaster"
+    android:background="@drawable/prepare_for_disaster_page_bkg">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_Back"
@@ -47,8 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnLocateShelter"
-                android:text="@string/locate_shelters"
-                android:textSize="@dimen/_20ssp"
+                android:text="@string/training_amp_education"
+                android:textSize="@dimen/_19ssp"
                 android:background="@drawable/red_button_bkg"
                 android:gravity="center"
                 android:textColor="@color/white"
@@ -65,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnResources"
-                android:text="@string/resources"
+                android:text="@string/home_safety_tips"
                 android:textSize="@dimen/_20ssp"
                 android:background="@drawable/red_button_bkg"
                 android:gravity="center"
@@ -82,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnReportIncident"
-                android:text="@string/reportincident"
+                android:text="@string/hazard_mitigation"
                 android:textSize="@dimen/_20ssp"
                 android:background="@drawable/red_button_bkg"
                 android:gravity="center"
@@ -99,8 +98,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnDonate"
-                android:text="@string/donate"
-                android:textSize="@dimen/_20ssp"
+                android:text="@string/preparedness_videos"
+                android:textSize="@dimen/_19ssp"
                 android:background="@drawable/red_button_bkg"
                 android:gravity="center"
                 android:textColor="@color/white"
@@ -177,6 +176,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
