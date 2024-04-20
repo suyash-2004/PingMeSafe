@@ -13,6 +13,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import com.example.pingemesafe.R;
@@ -37,11 +38,13 @@ public class Emergency_activity extends AppCompatActivity {
     AppCompatButton btn_call;
     AppCompatButton btn_sos_dialog_YES;
     AppCompatButton btn_sos_dialog_Cancel;
+    AppCompatButton btn_back;
     double latitude;
     double longitude;
     private String deviceName = android.os.Build.MODEL;
     private String SOS_message="";
     private String currentTime=getCurrentTime();
+    private String SOSname;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
     private FusedLocationProviderClient fusedLocationClient;
 
@@ -96,6 +99,14 @@ public class Emergency_activity extends AppCompatActivity {
             });
             dialog_SOS.show();
         });
+
+        btn_back = findViewById(R.id.btn_Back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     private String getCurrentTime(){
@@ -124,11 +135,13 @@ public class Emergency_activity extends AppCompatActivity {
         dialog_SOS_message.setContentView(R.layout.sos_dialog_message);
 
         EditText SOSMessage = dialog_SOS_message.findViewById(R.id.edt_SOSMsg);
+        EditText name = dialog_SOS_message.findViewById(R.id.edt_name);
         AppCompatButton btn_send_sos = dialog_SOS_message.findViewById(R.id.btn_send_sos);
 
         btn_send_sos.setOnClickListener(v1 -> {
             if(!SOSMessage.getText().toString().isEmpty()){
                SOS_message = SOSMessage.getText().toString().trim();
+               SOSname = name.getText().toString().trim();
             }
             dialog_SOS_message.dismiss();
             getCurrerntLocation();
@@ -137,7 +150,7 @@ public class Emergency_activity extends AppCompatActivity {
     }
 
     private void SendSOSAlert() {
-        databaseReference.child(alertID).setValue(new UnSafe_Alert_Model(latitude, longitude, "Suyash", SOS_message, deviceName, currentTime));
+        databaseReference.child(alertID).setValue(new UnSafe_Alert_Model(latitude, longitude, SOSname, SOS_message, deviceName, currentTime));
     }
 
     private void getCurrerntLocation() {

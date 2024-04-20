@@ -8,6 +8,37 @@
     android:paddingTop="@dimen/_30sdp"
     android:paddingEnd="@dimen/_30sdp">
 
+
+    <TextView
+        android:id="@+id/txt_entername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/edt_name"
+        android:textSize="@dimen/_16ssp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/ubuntubold" />
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_entername"
+        app:layout_constraintBottom_toTopOf="@+id/txt_entermsg"
+        android:background="@drawable/rounded_box"
+        android:ems="20"
+        android:gravity="top"
+        android:textColor="@color/black"
+        android:textAlignment="gravity"
+        android:cursorVisible="false"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:autofillHints=""
+        android:inputType="text"
+        android:hint="Name"/>
+
     <TextView
         android:id="@+id/txt_entermsg"
         android:layout_width="wrap_content"
@@ -31,7 +62,9 @@
         android:gravity="top"
         android:textColor="@color/black"
         android:textAlignment="gravity"
-        android:cursorVisible="false"/>
+        android:cursorVisible="false"
+        android:inputType="text"
+        android:hint="SOS message"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_send_sos"

@@ -11,7 +11,9 @@ public class UnSafe_Alert_Model {
         this.alertMessage = alertMessage;
         this.deviceName = deviceName;
         this.currentTime = currentTime;
+        this.name = name;
     }
+
 
     public String getCurrentTime() {
         return currentTime;
