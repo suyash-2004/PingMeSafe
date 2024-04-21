@@ -48,7 +48,7 @@ public class Emergency_activity extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
     private FusedLocationProviderClient fusedLocationClient;
 
-    private final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("unsafe alerts");
+    private final DatabaseReference AlertsdatabaseReference = FirebaseDatabase.getInstance().getReference("unsafe alerts");
     private String alertID;
 
     @Override
@@ -61,7 +61,7 @@ public class Emergency_activity extends AppCompatActivity {
 
         if(!fileExists("FireBaseAlretID.txt")) {
 
-            alertID = databaseReference.push().getKey();
+            alertID = AlertsdatabaseReference.push().getKey();
 
             createTextFile(this, "FireBaseAlretID.txt", alertID);
         }else{
@@ -150,7 +150,7 @@ public class Emergency_activity extends AppCompatActivity {
     }
 
     private void SendSOSAlert() {
-        databaseReference.child(alertID).setValue(new UnSafe_Alert_Model(latitude, longitude, SOSname, SOS_message, deviceName, currentTime));
+        AlertsdatabaseReference.child(alertID).setValue(new UnSafe_Alert_Model(latitude, longitude, SOSname, SOS_message, deviceName, currentTime));
     }
 
     private void getCurrerntLocation() {
