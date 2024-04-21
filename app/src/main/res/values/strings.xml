@@ -44,5 +44,9 @@
     <string name="are_you_sure_you_want_to_continue">Are you sure you want to \n\t\t\t\t\t\t\t\t\tcontinue?</string>
     <string name="caution_the_sos_button_is_for_emergencies_only_please_use_it_responsibly_and_only_when_you_are_in_immediate_danger_and_require_urgent_assistance_false_alarms_can_delay_help_for_those_who_need_it_most_your_safety_is_our_top_priority">Caution: The SOS button is for emergencies only. Please use it responsibly and only when you are in immediate danger and require urgent assistance. False alarms can delay help for those who need it most. Your safety is our top priority.</string>
     <string name="enter_name">Enter Name</string>
+    <string name="normal">Normal</string>
+    <string name="satellite">Satellite</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="terrain">Terrain</string>
 
 </resources>

@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import com.example.pingmesafe.FireBase.UnSafe_Alert_Model;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -60,11 +62,16 @@ public class HomeScreen_Activity extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
     private final DatabaseReference UserCurrentLocationDatabaseReference = FirebaseDatabase.getInstance().getReference("UserCurrentLocation");
 
+    private BottomSheetBehavior bottomSheetBehavior;
+    private ViewGroup mapFragmentContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        mapFragmentContainer = findViewById(R.id.contentContainer);
+        View bottomSheet = findViewById(R.id.layoutBottomSheet);
 
         if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -109,6 +116,8 @@ public class HomeScreen_Activity extends AppCompatActivity {
 
         //send user's current location coordinates to DB
         sendCurLocationtoDB();
+
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
     }
 
 
