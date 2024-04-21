@@ -1,12 +1,8 @@
-package com.example.pingmesafe;
+package com.example.pingmesafe.Activities;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-import static androidx.core.content.ContentProviderCompat.requireContext;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,30 +13,25 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.room.Update;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.pingemesafe.R;
-import com.example.pingmesafe.FireBase.UnSafe_Alert_Model;
+import com.example.pingmesafe.FireBase.User_Location_Model;
+import com.example.pingmesafe.Fragments.fragmentRegister_a_Disaster_shelter;
+import com.example.pingmesafe.Fragments.fragment_Become_Aware;
+import com.example.pingmesafe.Fragments.fragment_maps;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
+
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -62,15 +53,12 @@ public class HomeScreen_Activity extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
     private final DatabaseReference UserCurrentLocationDatabaseReference = FirebaseDatabase.getInstance().getReference("UserCurrentLocation");
 
-    private BottomSheetBehavior bottomSheetBehavior;
-    private ViewGroup mapFragmentContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        mapFragmentContainer = findViewById(R.id.contentContainer);
         View bottomSheet = findViewById(R.id.layoutBottomSheet);
 
         if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -117,7 +105,6 @@ public class HomeScreen_Activity extends AppCompatActivity {
         //send user's current location coordinates to DB
         sendCurLocationtoDB();
 
-        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
     }
 
 

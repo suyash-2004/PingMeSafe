@@ -34,17 +34,17 @@
             android:value="AIzaSyDbsSVsFwNqPjo7IiwprmzrosCGN5CmjYY" />
 
         <activity
-            android:name="com.example.pingmesafe.Activity_prepare_for_disaster"
+            android:name="com.example.pingmesafe.Activities.Activity_prepare_for_disaster"
             android:exported="false" />
         <activity
-            android:name="com.example.pingmesafe.Disaster_Recovery_Activity"
+            android:name="com.example.pingmesafe.Activities.Disaster_Recovery_Activity"
             android:exported="false" />
         <activity
-            android:name="com.example.pingmesafe.Emergency_activity"
+            android:name="com.example.pingmesafe.Activities.Emergency_activity"
             android:exported="false"
             android:theme="@style/homescreen_theme" />
         <activity
-            android:name="com.example.pingmesafe.HomeScreen_Activity"
+            android:name="com.example.pingmesafe.Activities.HomeScreen_Activity"
             android:exported="false"
             android:theme="@style/homescreen_theme" />
         <activity

@@ -1,4 +1,4 @@
-package com.example.pingmesafe;
+package com.example.pingmesafe.FireBase;
 
 public class User_Location_Model {
 

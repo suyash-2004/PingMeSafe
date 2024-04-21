@@ -1,4 +1,4 @@
-package com.example.pingmesafe;
+package com.example.pingmesafe.Fragments;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
@@ -72,7 +72,6 @@ public class fragment_maps extends Fragment implements OnMapReadyCallback, Popup
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext());
-        setHasOptionsMenu(true);
     }
 
     @Nullable

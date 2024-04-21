@@ -1,4 +1,4 @@
-package com.example.pingmesafe;
+package com.example.pingmesafe.Activities;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;

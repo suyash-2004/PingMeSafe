@@ -1,4 +1,4 @@
-package com.example.pingmesafe;
+package com.example.pingmesafe.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

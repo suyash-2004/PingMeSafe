@@ -1,4 +1,4 @@
-package com.example.pingmesafe;
+package com.example.pingmesafe.Fragments;
 
 import android.os.Bundle;
 

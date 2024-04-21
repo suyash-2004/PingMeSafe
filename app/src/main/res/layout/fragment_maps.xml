@@ -1,6 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Google Map fragment -->
     <fragment
@@ -15,9 +16,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:src="@drawable/menu"
         android:contentDescription="@string/app_name"
         android:layout_marginBottom="@dimen/_550sdp"
-        android:layout_marginEnd="@dimen/_20sdp"/>
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:src="@drawable/layer"
+        android:tint="@color/black"
+        android:tintMode="multiply"
+        android:foregroundTint="@color/black"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/map_menu_btn"
+        app:borderWidth="0dp"
+        app:elevation="6dp"/>
 
 </FrameLayout>

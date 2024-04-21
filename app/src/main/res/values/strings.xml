@@ -48,5 +48,7 @@
     <string name="satellite">Satellite</string>
     <string name="hybrid">Hybrid</string>
     <string name="terrain">Terrain</string>
+    <string name="enter_sos_message">Enter SOS Message</string>
+    <string name="name">Name</string>
 
 </resources>

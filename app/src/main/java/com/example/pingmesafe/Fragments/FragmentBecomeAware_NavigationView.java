@@ -1,4 +1,4 @@
-package com.example.pingmesafe;
+package com.example.pingmesafe.Fragments;
 
 import android.os.Bundle;
 
@@ -10,15 +10,15 @@ import android.view.ViewGroup;
 
 import com.example.pingemesafe.R;
 
+public class FragmentBecomeAware_NavigationView extends Fragment {
 
-public class fragmentitem3 extends Fragment {
-
-    public fragmentitem3() {
+    public FragmentBecomeAware_NavigationView() {
+        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_fragmentitem3, container, false);
+        return inflater.inflate(R.layout.fragment__become__aware, container, false);
     }
 }

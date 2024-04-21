@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.pingmesafe.Activity_prepare_for_disaster"
+    tools:context="com.example.pingmesafe.Activities.Activity_prepare_for_disaster"
     android:background="@drawable/prepare_for_disaster_page_bkg">
 
     <androidx.appcompat.widget.AppCompatButton
