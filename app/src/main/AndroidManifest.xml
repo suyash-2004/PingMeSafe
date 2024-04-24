@@ -42,11 +42,11 @@
         <activity
             android:name="com.example.pingmesafe.Activities.Emergency_activity"
             android:exported="false"
-            android:theme="@style/homescreen_theme" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name="com.example.pingmesafe.Activities.HomeScreen_Activity"
             android:exported="false"
-            android:theme="@style/homescreen_theme" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name="com.example.pingmesafe.MainActivity"
             android:exported="true"

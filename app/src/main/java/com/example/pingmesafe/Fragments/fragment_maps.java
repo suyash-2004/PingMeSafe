@@ -11,6 +11,7 @@ import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_TERRAIN;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -26,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 
 
 import com.example.pingemesafe.R;
@@ -124,11 +126,12 @@ public class fragment_maps extends Fragment implements OnMapReadyCallback, Popup
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                double latitude = snapshot.child("latitude").getValue(Double.class);
+                fetchDBData();
+                /*double latitude = snapshot.child("latitude").getValue(Double.class);
                 double longitude = snapshot.child("longitude").getValue(Double.class);
                 String name = snapshot.child("name").getValue(String.class);
                 String message = snapshot.child("alertMessage").getValue(String.class);
-                addMarker(latitude, longitude, name, message);
+                addMarker(latitude, longitude, name, message);*/
             }
 
             @SuppressLint("MissingPermission")
@@ -151,6 +154,35 @@ public class fragment_maps extends Fragment implements OnMapReadyCallback, Popup
                 // Handle errors (if needed)
             }
         });
+
+        if(googleMap!=null){
+            googleMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+                @Nullable
+                @Override
+                public View getInfoContents(@NonNull Marker marker) {
+                    return null;
+                }
+
+                @NonNull
+                @Override
+                public View getInfoWindow(@NonNull Marker marker) {
+                    View view = getLayoutInflater().inflate(R.layout.custom_info_window_marker,null);
+                    TextView name = view.findViewById(R.id.Name);
+                    TextView snippet = view.findViewById(R.id.Snippet);
+                    TextView latitude = view.findViewById(R.id.Latitude);
+                    TextView longitude = view.findViewById(R.id.Longitude);
+                    AppCompatButton btn_call = view.findViewById(R.id.btn_info_window_call);
+                    AppCompatButton btn_message = view.findViewById(R.id.btn_info_window_message);
+
+                    LatLng coordinates = marker.getPosition();
+                    name.setText(String.valueOf(marker.getTitle()));
+                    snippet.setText(String.valueOf(marker.getSnippet()));
+                    latitude.setText(String.valueOf(coordinates.latitude));
+                    longitude.setText(String.valueOf(coordinates.longitude));
+                    return view;
+                }
+            });
+        }
     }
 
     @Override

@@ -85,7 +85,7 @@
             android:id="@+id/textEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_90sdp"
+            android:layout_marginStart="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:text="@string/email"
             app:layout_constraintBottom_toTopOf="@id/edtEmail"
@@ -99,17 +99,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textOrSignWithEmail"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_marginTop="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_height="@dimen/_40sdp"
             android:paddingStart="@dimen/_10sdp"
-            android:paddingEnd="@dimen/_90sdp"
-            android:ems="12"
+            android:ems="14"
             android:hint="@string/mail_abc_com"
             android:background="@drawable/rounded_box"
             android:autofillHints=""
             android:inputType="textEmailAddress"
-            android:cursorVisible="false"/>
+            android:cursorVisible="false"
+            android:textSize="@dimen/_16ssp"/>
 
         <TextView
             android:id="@+id/textPassword"
@@ -119,24 +121,28 @@
             android:text="@string/passsword"
             app:layout_constraintBottom_toTopOf="@id/edtPassword"
             app:layout_constraintStart_toStartOf="@+id/edtPassword"
-            app:layout_constraintTop_toBottomOf="@+id/textEmail"/>
+            app:layout_constraintTop_toBottomOf="@+id/textEmail"
+            android:textColor="@color/black"/>
 
         <EditText
             android:id="@+id/edtPassword"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edtEmail"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_marginTop="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_height="@dimen/_40sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_90sdp"
-            android:ems="12"
+            android:ems="14"
             android:hint="@string/passwordHint"
             android:background="@drawable/rounded_box"
             android:autofillHints=""
             android:inputType="textPassword"
-            android:cursorVisible="false"/>
+            android:cursorVisible="false"
+            android:textSize="@dimen/_16ssp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogin"
