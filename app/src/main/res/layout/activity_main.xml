@@ -66,7 +66,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="@dimen/_60sdp"
-            android:layout_width="@dimen/_200sdp"
+            android:layout_width="@dimen/_180sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_gravity="center"
             android:background="@drawable/continuewithgoogle"/>
@@ -103,8 +103,9 @@
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_20sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_height="@dimen/_35sdp"
             android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
             android:ems="14"
             android:hint="@string/mail_abc_com"
             android:background="@drawable/rounded_box"
@@ -133,7 +134,7 @@
             android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_20sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_height="@dimen/_35sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_90sdp"
             android:ems="14"
@@ -142,11 +143,12 @@
             android:autofillHints=""
             android:inputType="textPassword"
             android:cursorVisible="false"
-            android:textSize="@dimen/_16ssp"/>
+            android:textSize="@dimen/_16ssp"
+            />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnLogin"
-            android:layout_width="@dimen/_200sdp"
+            android:layout_width="@dimen/_180sdp"
             android:layout_height="@dimen/_40sdp"
             android:background="@drawable/login_btn_bkg"
             app:layout_constraintStart_toStartOf="parent"

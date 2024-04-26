@@ -47,6 +47,8 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.firebase:firebase-database:20.3.1")
+    implementation("androidx.navigation:navigation-fragment:2.6.0")
+    implementation("androidx.navigation:navigation-ui:2.6.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
     annotationProcessor ("androidx.room:room-compiler:2.6.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")

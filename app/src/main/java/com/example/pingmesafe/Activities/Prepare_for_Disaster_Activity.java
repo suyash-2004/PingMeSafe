@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.pingemesafe.R;
 
-public class Activity_prepare_for_disaster extends AppCompatActivity {
+public class Prepare_for_Disaster_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
