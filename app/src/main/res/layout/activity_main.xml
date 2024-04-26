@@ -70,6 +70,7 @@
             android:layout_height="@dimen/_40sdp"
             android:layout_gravity="center"
             android:background="@drawable/continuewithgoogle"/>
+
         <TextView
             android:id="@+id/textOrSignWithEmail"
             app:layout_constraintTop_toBottomOf="@id/btnContinuewithgoogle"
@@ -112,7 +113,7 @@
             android:autofillHints=""
             android:inputType="textEmailAddress"
             android:cursorVisible="false"
-            android:textSize="@dimen/_16ssp"/>
+            android:textSize="@dimen/_12ssp"/>
 
         <TextView
             android:id="@+id/textPassword"
@@ -143,7 +144,7 @@
             android:autofillHints=""
             android:inputType="textPassword"
             android:cursorVisible="false"
-            android:textSize="@dimen/_16ssp"
+            android:textSize="@dimen/_12ssp"
             />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -156,6 +157,7 @@
             app:layout_constraintTop_toBottomOf="@id/edtPassword"
             android:layout_marginTop="@dimen/_30sdp"
             android:text="@string/login"
+            android:textSize="@dimen/_12ssp"
             android:textColor="@color/white"
             android:fontFamily="@font/ubuntubold"/>
 
