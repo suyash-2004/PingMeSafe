@@ -144,7 +144,7 @@ public class Emergency_activity extends AppCompatActivity {
                SOSname = name.getText().toString().trim();
             }
             dialog_SOS_message.dismiss();
-            getCurrerntLocation();
+            getCurrentLocation();
         });
         dialog_SOS_message.show();
     }
@@ -153,7 +153,7 @@ public class Emergency_activity extends AppCompatActivity {
         AlertsdatabaseReference.child(alertID).setValue(new UnSafe_Alert_Model(latitude, longitude, SOSname, SOS_message, deviceName, currentTime));
     }
 
-    private void getCurrerntLocation() {
+    private void getCurrentLocation() {
         if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else {
