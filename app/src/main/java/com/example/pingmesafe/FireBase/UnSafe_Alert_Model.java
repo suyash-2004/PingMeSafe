@@ -7,7 +7,6 @@ public class UnSafe_Alert_Model {
     public UnSafe_Alert_Model(double latitude, double longitude, String name, String alertMessage, String deviceName, String currentTime) {
         this.latitude = latitude;
         this.longitude = longitude;
-        this.name = name;
         this.alertMessage = alertMessage;
         this.deviceName = deviceName;
         this.currentTime = currentTime;

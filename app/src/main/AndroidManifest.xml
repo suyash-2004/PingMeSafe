@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         tools:targetApi="33">
         <activity
-            android:name="com.example.pingmesafe.Add_Emergency_Contacts_Activity"
+            android:name="com.example.pingmesafe.Activities.Add_Emergency_Contacts_Activity"
             android:exported="false" />
         <activity
             android:name="com.example.pingmesafe.Activities.Add_Emergency_Contact_Activity"

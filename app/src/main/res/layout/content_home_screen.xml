@@ -4,9 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:id="@+id/contentContainer">
+
+
+
 
     <FrameLayout
         android:id="@+id/frameLayoutContainer"
@@ -14,6 +17,22 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" >
+    </FrameLayout>
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/profile_picture"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="end"
+        android:src="@drawable/person_foreground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:background="@drawable/profile_pic_bkg"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

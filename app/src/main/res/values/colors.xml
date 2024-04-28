@@ -4,7 +4,6 @@
     <color name="Lightblack">#454545</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorBlue">#219ebc</color>
-    <color name="colorPurple">#7F265B</color>
     <color name="my_dark_primary">#FF000000</color>
     <color name="color_login_btn">#90327D</color>
     <color name="colorPrimary">@color/white</color>
@@ -18,6 +17,9 @@
     <color name="lavender">#000000</color>
     <color name="colorEmergencyBkg">#90327D</color>
     <color name="colorRed">#FF564F</color>
+    <color name="colorOutline">#E2E8F0</color>
+    <color name="colorPurple">#8A19D6</color>
+    <color name="colortext">#03314B</color>
 
 
 </resources>

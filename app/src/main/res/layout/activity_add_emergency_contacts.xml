@@ -5,6 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.pingmesafe.Add_Emergency_Contacts_Activity">
+    tools:context="com.example.pingmesafe.Activities.Add_Emergency_Contacts_Activity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

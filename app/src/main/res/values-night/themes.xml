@@ -5,6 +5,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/white</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
         <!-- Other theme attributes -->
     </style>
 
@@ -14,12 +16,14 @@
         <item name="colorPrimaryDark">@color/colorRed</item>
         <item name="colorAccent">#FFFFFF</item>
         <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
 
         <!-- Other theme attributes -->
     </style>
   <!-- Base application theme. -->
     <style name="Base.Theme.PingeMeSafe" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 </resources>

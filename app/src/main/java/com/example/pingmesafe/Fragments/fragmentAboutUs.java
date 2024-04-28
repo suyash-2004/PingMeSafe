@@ -10,15 +10,15 @@ import android.view.ViewGroup;
 
 import com.example.pingemesafe.R;
 
+public class fragmentAboutUs extends Fragment {
 
-public class fragmentitem3 extends Fragment {
-
-    public fragmentitem3() {
+    public fragmentAboutUs() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_fragmentitem3, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_fragmentitem4, container, false);
     }
 }
