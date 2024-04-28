@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,7 +16,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         tools:targetApi="33">
-
+        <activity
+            android:name="com.example.pingmesafe.Add_Emergency_Contacts_Activity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.pingmesafe.Activities.Add_Emergency_Contact_Activity"
+            android:exported="false"
+            android:theme="@style/Theme.PingeMeSafe" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -34,7 +39,7 @@
             android:value="AIzaSyDbsSVsFwNqPjo7IiwprmzrosCGN5CmjYY" />
 
         <activity
-            android:name="com.example.pingmesafe.Activities.Activity_prepare_for_disaster"
+            android:name="com.example.pingmesafe.Activities.Prepare_for_Disaster_Activity"
             android:exported="false" />
         <activity
             android:name="com.example.pingmesafe.Activities.Disaster_Recovery_Activity"

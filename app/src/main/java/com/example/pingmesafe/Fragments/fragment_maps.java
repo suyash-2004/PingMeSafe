@@ -49,6 +49,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import com.example.pingemesafe.R;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -102,6 +103,7 @@ public class fragment_maps extends Fragment implements OnMapReadyCallback, Popup
         if (ContextCompat.checkSelfPermission(requireContext(), ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(requireContext(), ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             googleMap.setMapType(MAP_TYPE_NORMAL);
+            googleMap.setMyLocationEnabled(true);
             fusedLocationClient.getLastLocation()
                     .addOnSuccessListener(requireActivity(), location -> {
                         if (location != null) {
@@ -240,9 +242,6 @@ public class fragment_maps extends Fragment implements OnMapReadyCallback, Popup
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 googleMap.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    if (Objects.equals(dataSnapshot.getKey(), fetchAlertID())) {
-                        googleMap.setMyLocationEnabled(false);
-                    }
                             double latitude = dataSnapshot.child("latitude").getValue(Double.class);
                             double longitude = dataSnapshot.child("longitude").getValue(Double.class);
                             String name = dataSnapshot.child("name").getValue(String.class);

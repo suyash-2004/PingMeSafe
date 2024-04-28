@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -66,7 +67,6 @@ public class HomeScreen_Activity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         }
 
-
         //finding IDs from xml file
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -102,12 +102,31 @@ public class HomeScreen_Activity extends AppCompatActivity {
         //initializing BottomSheet in Home Screen
         initBottomSheet();
 
-        //send user's current location coordinates to DB
-        sendCurLocationtoDB();
+        fetchAndSendLocation();
 
     }
 
 
+    private void fetchAndSendLocation() {
+        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, location -> {
+                    if (location != null) {
+                        latitude = location.getLatitude();
+                        longitude = location.getLongitude();
+                        // Send the location to the Realtime Database
+                        sendLocationToDatabase(latitude, longitude);
+                    }
+                });
+    }
+
+    private void sendLocationToDatabase(double latitude, double longitude) {
+        FetchAlertID();
+        UserCurrentLocationDatabaseReference.child(alertID).setValue(new User_Location_Model(latitude, longitude));
+    }
     private void initBottomSheet() {
         findViewById(R.id.layoutBottomSheet).findViewById(R.id.layoutEmergency).setOnClickListener(v -> startActivity(new Intent(HomeScreen_Activity.this,Emergency_activity.class)));
     }
@@ -117,12 +136,6 @@ public class HomeScreen_Activity extends AppCompatActivity {
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.frameLayoutContainer, fragment);
         ft.commit();
-    }
-
-    private void sendCurLocationtoDB(){
-        FetchCurLocation();
-        FetchAlertID();
-        UserCurrentLocationDatabaseReference.child(alertID).setValue(new User_Location_Model(latitude, longitude));
     }
 
     private void FetchCurLocation(){
@@ -143,9 +156,8 @@ public class HomeScreen_Activity extends AppCompatActivity {
 
     private void FetchAlertID(){
         if(!fileExists("FireBaseAlretID.txt")) {
-
             alertID = UserCurrentLocationDatabaseReference.push().getKey();
-
+            assert alertID != null;
             createTextFile(HomeScreen_Activity.this, "FireBaseAlretID.txt", alertID);
         }else{
             StringBuilder content = new StringBuilder();

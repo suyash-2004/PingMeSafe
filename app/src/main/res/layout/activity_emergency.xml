@@ -60,8 +60,8 @@
         app:cardElevation="@dimen/_5sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_280sdp"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_50sdp"
             android:layout_gravity="center"
             android:background="@drawable/bottom_nav_bkg">
 
@@ -74,7 +74,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_police_emergency"
-                android:layout_marginEnd="@dimen/_10sdp"/>
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"/>
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/btn_police_emergency"
@@ -85,7 +86,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_fire_emergency"
-                android:layout_marginEnd="@dimen/_10sdp"/>
+                android:layout_marginEnd="@dimen/_5sdp"/>
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/btn_fire_emergency"
@@ -95,18 +96,10 @@
                 app:layout_constraintStart_toEndOf="@id/btn_police_emergency"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btn_women_helpline_emergency"
-                android:layout_marginEnd="@dimen/_10sdp"/>
-
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/btn_women_helpline_emergency"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
-                android:src="@drawable/women_helpline_logo"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/btn_fire_emergency"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginEnd="@dimen/_5sdp"/>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
