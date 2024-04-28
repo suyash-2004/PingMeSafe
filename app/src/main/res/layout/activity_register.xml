@@ -139,7 +139,7 @@
             android:cursorVisible="false"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnR"
             android:layout_width="@dimen/_200sdp"
             android:layout_height="@dimen/_40sdp"
             android:background="@drawable/login_btn_bkg"

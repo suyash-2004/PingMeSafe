@@ -12,8 +12,12 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.pingemesafe.R;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.w3c.dom.Text;
+
 public class Register extends AppCompatActivity {
 
+    TextInputEditText editTextEmail , editTextPassword;
+    Button buttonReg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,5 +28,10 @@ public class Register extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        editTextEmail = findViewById(R.id.edtEmail);
+        editTextPassword = findViewById((R.id.edtPassword);
+
+        buttonReg = findViewById(R.id.btn)
     }
 }
