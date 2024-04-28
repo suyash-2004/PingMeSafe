@@ -1,10 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.pingmesafe.FireBase.Register">
+    tools:context="com.example.pingmesafe.MainActivity"
+    android:background="@color/black">
+
+    <ImageView
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="361dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:src="@drawable/earth_bkg_login"
+        android:contentDescription="@string/app_name"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_30sdp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Register_for_an_account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="@dimen/_19ssp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/ubuntumedium"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_130sdp">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bkg2"
+            android:layout_marginTop="@dimen/_40sdp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnContinuewithgoogle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/continuewithgoogle"/>
+        <TextView
+            android:id="@+id/textOrSignWithEmail"
+            app:layout_constraintTop_toBottomOf="@id/btnContinuewithgoogle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/or_sign_in_with_email"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/textEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_90sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/email"
+            app:layout_constraintBottom_toTopOf="@id/edtEmail"
+            app:layout_constraintEnd_toStartOf="@id/edtEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textOrSignWithEmail"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/edtEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textOrSignWithEmail"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_90sdp"
+            android:ems="12"
+            android:hint="@string/mail_abc_com"
+            android:background="@drawable/rounded_box"
+            android:autofillHints=""
+            android:inputType="textEmailAddress"
+            android:cursorVisible="false"/>
+
+        <TextView
+            android:id="@+id/textPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_48sdp"
+            android:text="@string/passsword"
+            app:layout_constraintBottom_toTopOf="@id/edtPassword"
+            app:layout_constraintStart_toStartOf="@+id/edtPassword"
+            app:layout_constraintTop_toBottomOf="@+id/textEmail"/>
+
+        <EditText
+            android:id="@+id/edtPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtEmail"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_90sdp"
+            android:ems="12"
+            android:hint="@string/passwordHint"
+            android:background="@drawable/rounded_box"
+            android:autofillHints=""
+            android:inputType="textPassword"
+            android:cursorVisible="false"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/login_btn_bkg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtPassword"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:fontFamily="@font/ubuntubold"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_20sdp">
+
+        <TextView
+            android:id="@+id/newToPingMeSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_to_pingmesafe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout"
+            app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:fontFamily="@font/ubunturegular"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/newToPingMeSave"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/register"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/ubuntubold"
+            android:layout_marginTop="-10dp"/>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

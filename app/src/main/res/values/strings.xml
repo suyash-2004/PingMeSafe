@@ -50,5 +50,6 @@
     <string name="terrain">Terrain</string>
     <string name="enter_sos_message">Enter SOS Message</string>
     <string name="name">Name</string>
+    <string name="Register_for_an_account">Register For an Account</string>
 
 </resources>
