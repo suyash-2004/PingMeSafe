@@ -50,8 +50,8 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.3.1")
     
 
-    implementation("androidx.navigation:navigation-fragment:2.6.0")
-    implementation("androidx.navigation:navigation-ui:2.6.0")
+    implementation("androidx.navigation:navigation-fragment:2.7.7")
+    implementation("androidx.navigation:navigation-ui:2.7.7")
 
     annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
     annotationProcessor ("androidx.room:room-compiler:2.6.1")

@@ -16,13 +16,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         tools:targetApi="33">
-        <activity
-            android:name="com.example.pingmesafe.Activities.Add_Emergency_Contacts_Activity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.pingmesafe.Activities.Add_Emergency_Contact_Activity"
-            android:exported="false"
-            android:theme="@style/Theme.PingeMeSafe" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -38,12 +31,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDbsSVsFwNqPjo7IiwprmzrosCGN5CmjYY" />
 
-        <activity
-            android:name="com.example.pingmesafe.Activities.Prepare_for_Disaster_Activity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.pingmesafe.Activities.Disaster_Recovery_Activity"
-            android:exported="false" />
         <activity
             android:name="com.example.pingmesafe.Activities.Emergency_activity"
             android:exported="false"

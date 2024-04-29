@@ -8,9 +8,6 @@
       },
       {
         "saturation": -11
-      },
-      {
-        "visibility": "on"
       }
     ]
   },
@@ -19,115 +16,16 @@
     "elementType": "all",
     "stylers": [
       {
-        "saturation": "33"
+        "saturation": -78
       },
       {
         "hue": "#6600ff"
       },
       {
-        "lightness": "2"
+        "lightness": -47
       },
       {
-        "visibility": "simplified"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.attraction",
-    "elementType": "all",
-    "stylers": [
-      {
-        "saturation": "-58"
-      },
-      {
-        "lightness": "28"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.business",
-    "elementType": "all",
-    "stylers": [
-      {
-        "saturation": "-58"
-      },
-      {
-        "lightness": "28"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.government",
-    "elementType": "all",
-    "stylers": [
-      {
-        "saturation": "-58"
-      },
-      {
-        "lightness": "28"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.medical",
-    "elementType": "all",
-    "stylers": [
-      {
-        "saturation": "-58"
-      },
-      {
-        "lightness": "28"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "all",
-    "stylers": [
-      {
-        "visibility": "on"
-      },
-      {
-        "saturation": "-58"
-      },
-      {
-        "lightness": "28"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.place_of_worship",
-    "elementType": "all",
-    "stylers": [
-      {
-        "saturation": "-58"
-      },
-      {
-        "lightness": "28"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.school",
-    "elementType": "all",
-    "stylers": [
-      {
-        "saturation": "-58"
-      },
-      {
-        "lightness": "28"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.sports_complex",
-    "elementType": "all",
-    "stylers": [
-      {
-        "saturation": "-58"
-      },
-      {
-        "lightness": "28"
+        "visibility": "off"
       }
     ]
   },
@@ -140,15 +38,6 @@
       },
       {
         "saturation": -79
-      }
-    ]
-  },
-  {
-    "featureType": "road.arterial",
-    "elementType": "labels.icon",
-    "stylers": [
-      {
-        "visibility": "off"
       }
     ]
   },

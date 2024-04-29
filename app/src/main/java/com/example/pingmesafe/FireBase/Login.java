@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -25,7 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
-    TextInputEditText editTextEmail , editTextPassword;
+    EditText editTextEmail , editTextPassword;
     Button buttonReg;
     FirebaseAuth mAuth;
 
@@ -53,7 +54,7 @@ public class Login extends AppCompatActivity {
         });
 
         editTextEmail = findViewById(R.id.edtEmail);
-        editTextPassword = findViewById((R.id.edtPassword);
+        editTextPassword = findViewById(R.id.edtPassword);
 
         buttonReg = findViewById(R.id.btnLogin);
 

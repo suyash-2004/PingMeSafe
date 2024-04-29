@@ -54,7 +54,7 @@
             <TextView
                 android:layout_width="350sp"
                 android:layout_height="match_parent"
-                android:text="An open source disaster recovery and management app"
+                android:text="@string/an_open_source_disaster_recovery_and_management_app"
                 android:textSize="@dimen/_12ssp"
                 android:fontFamily="@font/intermedium"
                 android:textColor="@color/white"/>

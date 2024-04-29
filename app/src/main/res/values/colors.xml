@@ -3,23 +3,23 @@
     <color name="black">#FF000000</color>
     <color name="Lightblack">#454545</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorBlue">#219ebc</color>
     <color name="my_dark_primary">#FF000000</color>
     <color name="color_login_btn">#90327D</color>
-    <color name="colorPrimary">@color/white</color>
+    <!--<color name="colorPrimary">@color/white</color>
     <color name="colorPrimaryDark">@color/white</color>
-    <color name="colorAccent">@color/black</color>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="lavender">#000000</color>
+    <color name="colorAccent">@color/black</color>-->
     <color name="colorEmergencyBkg">#90327D</color>
     <color name="colorRed">#FF564F</color>
     <color name="colorOutline">#E2E8F0</color>
     <color name="colorPurple">#8A19D6</color>
     <color name="colortext">#03314B</color>
+    <color name="whitebkg">#F9FBFF</color>
+    <color name="colorHint">#AEAEAE</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">@color/black</color>
+    <color name="colorSurface">#FFFFFF</color> <!-- Background color for surfaces -->
+    <color name="colorOnSurface">#000000</color> <!-- Text color for surfaces -->
 
 
 </resources>

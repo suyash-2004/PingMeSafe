@@ -3,34 +3,43 @@ package com.example.pingmesafe.Activities;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.example.pingemesafe.R;
+import com.example.pingemesafe.databinding.ActivityMainBinding;
+import com.example.pingmesafe.Adapters.MyAdapter;
 import com.example.pingmesafe.FireBase.User_Location_Model;
-import com.example.pingmesafe.Fragments.fragmentRegister_a_Disaster_shelter;
-import com.example.pingmesafe.Fragments.fragment_Become_Aware;
-import com.example.pingmesafe.Fragments.fragment_maps;
+import com.example.pingmesafe.Fragments.fragment_emergency;
+import com.example.pingmesafe.Fragments.fragment_home;
+import com.example.pingmesafe.Fragments.fragment_prepare;
+import com.example.pingmesafe.Fragments.fragment_recover;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -42,21 +51,20 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeScreen_Activity extends AppCompatActivity {
     double latitude;
     double longitude;
     private String alertID;
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolbar;
-    fragment_maps mapsFragment;
 
+    FloatingActionButton fab_sos;
+    MyAdapter adapter;
+    RecyclerView recyclerView;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
     private final DatabaseReference UserCurrentLocationDatabaseReference = FirebaseDatabase.getInstance().getReference("UserCurrentLocation");
-
-
+    List<List<String>> list= new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,48 +72,60 @@ public class HomeScreen_Activity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setContentView(R.layout.activity_home_screen);
 
-        View bottomSheet = findViewById(R.id.layoutBottomSheet);
+
+        fab_sos = findViewById(R.id.fab);
+        fab_sos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeScreen_Activity.this, Emergency_activity.class));
+            }
+        });
+        //recyclerView =  findViewById(R.id.recyclerView);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        List<String> item1 = new ArrayList<>();
+        item1.add("Disaster Name 1");
+        item1.add("Disaster Details 1");
+        item1.add("Disaster Time 1");
+        list.add(item1);
+
+        //adapter = new MyAdapter(list);
+        //recyclerView.setAdapter(adapter);
+        //adapter.notifyDataSetChanged();
+
 
         if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         }
 
-        //finding IDs from xml file
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+        loadFragment(new fragment_home());
 
-        //setting Navigation View in Drawer layout
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open_nav, R.string.close_nav);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        //loading default map fragment
-        loadFragment(new fragment_maps());
-
-        //change fragments when navigation view items are clicked
-        navigationView.setNavigationItemSelectedListener(item -> {
+        BottomAppBar bottomAppBar = findViewById(R.id.bottomAppBar);
+        bottomAppBar.setFabAlignmentMode(BottomAppBar.FAB_ALIGNMENT_MODE_CENTER);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setBackground(null);
+        bottomNavigationView.getMenu().getItem(2).setEnabled(false);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-            if (id == R.id.itemMap) {
-                loadFragment(new fragment_maps());
-            } else if (id == R.id.itemBecomeAware) {
-                loadFragment(new fragment_Become_Aware());
-            } else if (id == R.id.itemRegisterShelter) {
-                loadFragment(new fragmentRegister_a_Disaster_shelter());
+            if (id == R.id.menu_home) {
+                loadFragment(new fragment_home());
+            } else if (id == R.id.menu_prepare) {
+                loadFragment(new fragment_prepare());
+            } else if (id == R.id.menu_recover) {
+                loadFragment(new fragment_recover());
+            } else if (id == R.id.menu_Emergency) {
+                loadFragment(new fragment_emergency());
             }
-            drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
 
-        //initializing BottomSheet in Home Screen
-        initBottomSheet();
 
-        fetchAndSendLocation();
-
+        fetchLocation();
+        sendLocationToDatabase(latitude, longitude);
     }
 
-
-    private void fetchAndSendLocation() {
+    private void fetchLocation() {
         FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
@@ -115,8 +135,6 @@ public class HomeScreen_Activity extends AppCompatActivity {
                     if (location != null) {
                         latitude = location.getLatitude();
                         longitude = location.getLongitude();
-                        // Send the location to the Realtime Database
-                        sendLocationToDatabase(latitude, longitude);
                     }
                 });
     }
@@ -125,14 +143,11 @@ public class HomeScreen_Activity extends AppCompatActivity {
         FetchAlertID();
         UserCurrentLocationDatabaseReference.child(alertID).setValue(new User_Location_Model(latitude, longitude));
     }
-    private void initBottomSheet() {
-        findViewById(R.id.layoutBottomSheet).findViewById(R.id.layoutEmergency).setOnClickListener(v -> startActivity(new Intent(HomeScreen_Activity.this,Emergency_activity.class)));
-    }
 
     private void loadFragment(Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.frameLayoutContainer, fragment);
+        ft.replace(R.id.frame_layout, fragment);
         ft.commit();
     }
 

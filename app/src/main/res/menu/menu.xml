@@ -1,68 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn = "navigation_view">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item
+        android:id="@+id/menu_home"
+        android:title="@string/home"
+        android:icon="@drawable/home_icon"/>
 
+    <item
+        android:id="@+id/menu_prepare"
+        android:title="Prepare"
+        android:icon="@drawable/prepare_icon"
+        />
 
-        <group
-            android:checkableBehavior="single">
-            <item
-                android:id="@+id/itemMap"
-                android:icon="@drawable/map_foreground"
-                android:title="@string/map"
-                android:actionLayout="@layout/space_layout" />
-        </group>
+    <item
+        android:title=""/>
 
-
-        <group
-            android:checkableBehavior="single">
-            <item
-                android:id="@+id/itemBecomeAware"
-                android:icon="@drawable/person_foreground"
-                android:title="@string/becomeaware"
-                android:actionLayout="@layout/space_layout" />
-        </group>
-
-
-        <group
-            android:checkableBehavior="single">
-            <item
-                android:id="@+id/itemRegisterShelter"
-                android:icon="@drawable/person_foreground"
-                android:title="@string/register_a_shelter"
-                android:actionLayout="@layout/space_layout" />
-        </group>
-
-        <group
-            android:checkableBehavior="single">
-            <item
-                android:id="@+id/itemEmergencyContacts"
-                android:icon="@drawable/person_foreground"
-                android:title="@string/emergency_contacts"
-                android:actionLayout="@layout/space_layout" />
-        </group>
-
-        <group
-            android:checkableBehavior="single">
-            <item android:id="@+id/itemContribute"
-                android:icon="@drawable/person_foreground"
-                android:title="@string/contribute"
-                android:actionLayout="@layout/space_layout" />
-        </group>
-
-        <group
-            android:checkableBehavior="single">
-            <item android:id="@+id/itemAboutUs"
-                android:icon="@drawable/person_foreground"
-                android:title="@string/about_us"
-                android:actionLayout="@layout/space_layout" />
-        </group>
-
-
-
-
-
-
+    <item
+        android:id="@+id/menu_recover"
+        android:title="Recover"
+        android:icon="@drawable/recover_icon" />
+    <item
+        android:id="@+id/menu_Emergency"
+        android:title="Emergenct"
+        android:icon="@drawable/emergency" />
 
 </menu>

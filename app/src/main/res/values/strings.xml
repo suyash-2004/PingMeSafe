@@ -95,5 +95,8 @@
     </string>
     <string name="admin_email_com">admin@email.com</string>
     <string name="google">Google</string>
+    <string name="Register_for_an_account">Register for account\n</string>
+    <string name="an_open_source_disaster_recovery_and_management_app"><![CDATA[An open source disaster recovery and management app]]></string>
+    <string name="home">Home</string>
 
 </resources>

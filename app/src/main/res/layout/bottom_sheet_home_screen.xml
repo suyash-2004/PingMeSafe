@@ -1,154 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_15sdp"
     android:orientation="vertical"
+    app:cardBackgroundColor="@color/whitebkg"
     android:background="@drawable/swipable_menu_bkg_curved"
-    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    app:behavior_peekHeight="@dimen/_118sdp"
-    android:id="@+id/layoutBottomSheet">
-
-    <ImageView
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_5sdp"
-        android:src="@drawable/line_rounded"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_20sdp"/>
+    android:id="@+id/layoutBottomSheet"
+    android:paddingTop="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_20sdp"
+    android:layout_marginStart="@dimen/_20sdp"
+    android:layout_gravity="center_horizontal">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/_300sdp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/layoutEmergency"
-        android:background="@drawable/emergency_bkg_rectangle"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_gravity="center">
+        android:padding="@dimen/_10sdp">
 
-        <ImageView
-            android:id="@+id/imageSOSEmergency"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:src="@drawable/sos_foreground"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/layoutDetails"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:layout_marginStart="@dimen/_40sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View all"
+                android:id="@+id/txt_viewall"
+                android:textColor="@color/colortext"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/image_next"
+                />
+
+            <ImageView
+                android:id="@+id/image_next"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:background="@drawable/purple_circle"
+                android:contentDescription="@string/app_name"
+                android:rotation="180"
+                android:src="@drawable/arrow_foreground"
+                app:tint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txt_viewall"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_5sdp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textEmergency"
-            android:contentDescription="@string/app_name"
-            android:layout_marginStart="@dimen/_6sdp"/>
-        <TextView
-            android:id="@+id/textEmergency"
+            app:layout_constraintEnd_toStartOf="@+id/layoutDetails"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:src="@drawable/avatar1"/>
+
+        <LinearLayout
+            android:id="@+id/layoutDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/emergency"
-            android:textSize="@dimen/_20ssp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/imageSOSEmergency"
+            android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="@dimen/_8sdp"/>
+            app:layout_constraintStart_toEndOf="@+id/image"
+            android:layout_marginStart="@dimen/_10sdp">
 
-        <ImageView
-            android:id="@+id/imageArrowEmergency"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:src="@drawable/arrow_right"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <TextView
+                android:id="@+id/disaster_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disaster Name"
+                android:textColor="@color/colortext"
+                android:textSize="@dimen/_14ssp"
+                android:fontFamily="@font/sourcesanssemibold"/>
+
+            <TextView
+                android:id="@+id/disaster_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disaster Details"
+                android:textColor="@color/colortext"
+                android:textSize="@dimen/_14ssp"
+                android:fontFamily="@font/sourcesanssemibold"/>
+
+            <TextView
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/layoutDetails"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/disaster_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disaster Time"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:textColor="@color/colortext"
+                android:textSize="@dimen/_14ssp"
+                android:fontFamily="@font/sourcesanssemibold"/>
+        </LinearLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/_300sdp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/layoutDisasterRecovery"
-        android:background="@drawable/disaster_recovery_bkg_rectangle"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_gravity="center">
-
-        <ImageView
-            android:id="@+id/imageSOSDisasterRecovery"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:src="@drawable/disaster_recovery"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textDisasterRecovery"
-            android:contentDescription="@string/app_name"
-            android:scaleY="0.6"
-            android:scaleX="0.6" />
-        <TextView
-            android:id="@+id/textDisasterRecovery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/disasterrecovery"
-            android:textSize="@dimen/_20ssp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/imageSOSDisasterRecovery"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageArrowDisasterRecovery"/>
-
-        <ImageView
-            android:id="@+id/imageArrowDisasterRecovery"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:src="@drawable/arrow_right"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/_300sdp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/layoutPrepareForDisaster"
-        android:background="@drawable/disaster_recovery_bkg_rectangle"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/_20sdp">
-
-        <ImageView
-            android:id="@+id/imageSOSPrepareForDisaster"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:src="@drawable/prepare_fot_disaster_foreground"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textPrepareForDisaster"
-            android:contentDescription="@string/app_name"
-            android:layout_marginStart="@dimen/_25sdp"
-            android:scaleX="1.2"
-            android:scaleY="1.2"/>
-
-        <TextView
-            android:id="@+id/textPrepareForDisaster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/prepare_for_disaster"
-            android:textSize="@dimen/_20ssp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/imageSOSPrepareForDisaster"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageArrowPrepareForDisaster"
-            android:layout_marginStart="@dimen/_5sdp"/>
-
-        <ImageView
-            android:id="@+id/imageArrowPrepareForDisaster"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:src="@drawable/arrow_right"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</LinearLayout>
+</androidx.cardview.widget.CardView>

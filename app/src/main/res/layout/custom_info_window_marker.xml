@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -41,11 +42,13 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:scaleY="0.9"
-            android:scaleX="0.9"
+            android:scaleY="1"
+            android:scaleX="1"
+            android:tint="@color/colorPurple"
             android:layout_margin="@dimen/_10sdp"
-            android:src="@drawable/sos"
-            android:background="@null"/>
+            android:src="@drawable/sos_marker"
+            android:background="@null"
+            tools:ignore="UseAppTint" />
 
         <TextView
             android:id="@+id/Latitude"
@@ -90,7 +93,7 @@
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-
+                android:backgroundTint="@color/colorPurple"
                 android:background="@drawable/call_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -101,7 +104,7 @@
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-
+                android:backgroundTint="@color/colorPurple"
                 android:background="@drawable/message_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
