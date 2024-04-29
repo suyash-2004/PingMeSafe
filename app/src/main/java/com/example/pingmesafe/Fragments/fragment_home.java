@@ -95,13 +95,12 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
         googleMap = map;
         googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(),R.raw.map_style));
         fetchDBData();
-        googleMap.setMyLocationEnabled(!isUserSOS());
         if (ContextCompat.checkSelfPermission(requireContext(), ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(requireContext(), ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             googleMap.setMapType(MAP_TYPE_NORMAL);
             googleMap.setMyLocationEnabled(true);
-            googleMap.getUiSettings().setMapToolbarEnabled(true);
-            googleMap.getUiSettings().setCompassEnabled(true);
+            //googleMap.getUiSettings().setMapToolbarEnabled(true);
+            //googleMap.getUiSettings().setCompassEnabled(true);
             fusedLocationClient.getLastLocation()
                     .addOnSuccessListener(requireActivity(), location -> {
                         if (location != null) {

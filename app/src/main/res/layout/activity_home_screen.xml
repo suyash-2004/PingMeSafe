@@ -15,109 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/_50sdp">
 
-        <ImageView
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/image_profile"
-            android:layout_width="@dimen/_45sdp"
-            android:layout_height="@dimen/_45sdp"
-            android:background="@drawable/avatar1"
-            android:src="@drawable/avatar8"
-            android:layout_marginEnd="@dimen/_20sdp"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_email"
-            android:layout_width="@dimen/_180sdp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:layout_constraintStart_toEndOf="@id/image_profile"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/layout_noti"
-            android:layout_marginStart="@dimen/_7sdp">
-
-            <ImageView
-                android:id="@+id/imageedt"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_width="@dimen/_180sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:src="@drawable/search_bkg" />
-
-            <ImageView
-                android:id="@+id/imageMailId"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/search"
-                android:tint="@color/colorHint"
-                android:layout_marginStart="@dimen/_8sdp"
-                tools:ignore="UseAppTint" />
-
-            <EditText
-                android:id="@+id/edt_mailid"
-                app:layout_constraintStart_toEndOf="@+id/imageMailId"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_width="@dimen/_170sdp"
-                android:lines="1"
-                android:inputType="textEmailAddress"
-                android:singleLine="true"
-                android:layout_height="@dimen/_50sdp"
-                android:textColor="@color/colortext"
-                android:textColorHint="@color/colorHint"
-                android:hint="Search"
-                android:background="@null"
-                android:layout_marginStart="@dimen/_4sdp"
-                android:textSize="@dimen/_12ssp"
-                android:fontFamily="@font/ubunturegular"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:id="@+id/layout_noti"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/layout_email"
-            android:layout_marginStart="@dimen/_7sdp">
-
-            <ImageView
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:id="@+id/image_Notification"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:background="@drawable/search_bkg" />
-
-            <ImageView
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:id="@+id/image_bell"
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="@dimen/_15sdp"
-                android:src="@drawable/bell"
-                android:tint="@color/black"
-                tools:ignore="UseAppTint"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
@@ -145,12 +43,6 @@
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
-    <include layout="@layout/bottom_sheet_home_screen"
-        android:id="@+id/recent_disasters"
-        android:layout_gravity="bottom|center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_100sdp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

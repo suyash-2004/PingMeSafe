@@ -12,6 +12,7 @@
     <color name="colorRed">#FF564F</color>
     <color name="colorOutline">#E2E8F0</color>
     <color name="colorPurple">#8A19D6</color>
+    <color name="colorPurpleLight">#9C5DC6</color>
     <color name="colortext">#03314B</color>
     <color name="whitebkg">#F9FBFF</color>
     <color name="colorHint">#AEAEAE</color>

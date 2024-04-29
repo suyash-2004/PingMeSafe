@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="@dimen/_15sdp"
     android:orientation="vertical"
-    app:cardBackgroundColor="@color/whitebkg"
+    app:cardBackgroundColor="@color/colorPurple"
     android:background="@drawable/swipable_menu_bkg_curved"
     android:id="@+id/layoutBottomSheet"
     android:paddingTop="@dimen/_10sdp"
@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_10sdp">
+        android:padding="@dimen/_5sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -26,16 +26,16 @@
             app:layout_constraintStart_toEndOf="@id/layoutDetails"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="@dimen/_40sdp"
+            android:layout_marginBottom="@dimen/_37sdp"
             android:layout_marginEnd="@dimen/_6sdp"
-            android:layout_marginStart="@dimen/_40sdp">
+            android:layout_marginStart="@dimen/_30sdp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="View all"
                 android:id="@+id/txt_viewall"
-                android:textColor="@color/colortext"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_14ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -55,7 +55,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/txt_viewall"
-                android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/_5sdp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -68,9 +67,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/layoutDetails"
-            android:layout_width="@dimen/_45sdp"
-            android:layout_height="@dimen/_45sdp"
-            android:src="@drawable/avatar1"/>
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_55sdp"
+            android:tint="@color/colorRed"
+            android:src="@drawable/warning_foreground"
+            android:background="@null"
+            android:scaleX="1.2"
+            android:scaleY="1.2"/>
 
         <LinearLayout
             android:id="@+id/layoutDetails"
@@ -80,25 +83,27 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image"
-            android:layout_marginStart="@dimen/_10sdp">
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp">
 
             <TextView
                 android:id="@+id/disaster_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Disaster Name"
-                android:textColor="@color/colortext"
+                android:text="Earthquake"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_14ssp"
-                android:fontFamily="@font/sourcesanssemibold"/>
+                android:fontFamily="@font/ubuntubold"
+                android:layout_marginBottom="@dimen/_7sdp"/>
 
             <TextView
                 android:id="@+id/disaster_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Disaster Details"
-                android:textColor="@color/colortext"
+                android:text="Clement Town"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_14ssp"
-                android:fontFamily="@font/sourcesanssemibold"/>
+                android:fontFamily="@font/ubunturegular" />
 
             <TextView
                 app:layout_constraintEnd_toEndOf="parent"
@@ -107,11 +112,11 @@
                 android:id="@+id/disaster_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Disaster Time"
+                android:text="2 hours Ago"
                 android:layout_marginTop="@dimen/_2sdp"
-                android:textColor="@color/colortext"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_14ssp"
-                android:fontFamily="@font/sourcesanssemibold"/>
+                android:fontFamily="@font/ubunturegular" />
         </LinearLayout>
 
 
