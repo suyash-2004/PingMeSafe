@@ -1,4 +1,4 @@
-# PingMeSafe
+# PingMeSafe Android App Repository
 
 PingMeSafe is a comprehensive disaster recovery platform designed to provide individuals and communities with essential tools and resources to navigate emergencies effectively.
 
@@ -12,10 +12,10 @@ PingMeSafe is a comprehensive disaster recovery platform designed to provide ind
 
 ## Getting Started
 
-To get started with PingMeSafe, follow these steps:
+To get started with the PingMeSafe Android app, follow these steps:
 
 1. Clone the repository:
-```git clone https://github.com/yourusername/pingmesafe.git```
+   ```git clone https://github.com/yourusername/pingmesafe.git```
 
 2. Open the project in Android Studio.
 
@@ -23,7 +23,7 @@ To get started with PingMeSafe, follow these steps:
 
 ## Contributing
 
-We welcome contributions from the community to improve and enhance PingMeSafe. If you'd like to contribute, please follow these guidelines:
+We welcome contributions from the community to improve and enhance the PingMeSafe Android app. If you'd like to contribute, please follow these guidelines:
 
 - Fork the repository.
 - Create a new branch for your feature or bug fix.
@@ -37,4 +37,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any inquiries or support, please contact us at [suyash096@gmail.com](mailto:Suyash096@gmail.com).
+For any inquiries or support related to the PingMeSafe Android app, please contact us at [pingmesafe@gmail.com](mailto:pingmesafe@gmail.com).
+
+We are also looking for developers to support us in building the web and iOS platform apps. If you're interested, please reach out to our official email address.
