@@ -66,7 +66,7 @@ dependencies {
     implementation ("com.makeramen:roundedimageview:2.3.0")
     implementation ("com.squareup.picasso:picasso:2.5.2")
     implementation ("androidx.activity:activity:1.9.0")
-
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
 
     testImplementation ("junit:junit:4.13.2")
 

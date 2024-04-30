@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         tools:targetApi="33">
+
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -33,6 +34,10 @@
 
         <activity
             android:name="com.example.pingmesafe.Activities.Emergency_activity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.example.pingmesafe.Activities.Register_Activity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity

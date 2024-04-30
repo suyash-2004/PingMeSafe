@@ -19,6 +19,7 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">@color/black</color>
+    <color name="colorOutlineDark">#292929</color>
     <color name="colorSurface">#FFFFFF</color> <!-- Background color for surfaces -->
     <color name="colorOnSurface">#000000</color> <!-- Text color for surfaces -->
 

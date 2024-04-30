@@ -43,7 +43,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/edt_mailid"
+                app:layout_constraintEnd_toStartOf="@id/edt_mailid_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/image_email"
@@ -52,7 +52,7 @@
                 tools:ignore="UseAppTint" />
 
             <EditText
-                android:id="@+id/edt_mailid"
+                android:id="@+id/edt_mailid_login"
                 app:layout_constraintStart_toEndOf="@+id/imageMailId"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -92,7 +92,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/edt_pass"
+                app:layout_constraintEnd_toStartOf="@id/edt_pass_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/image_pass"
@@ -101,7 +101,7 @@
                 tools:ignore="UseAppTint" />
 
             <EditText
-                android:id="@+id/edt_pass"
+                android:id="@+id/edt_pass_login"
                 app:layout_constraintStart_toEndOf="@+id/imagepass"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -122,6 +122,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            android:id="@+id/txt_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register"

@@ -53,8 +53,8 @@ public class Login extends AppCompatActivity {
             return insets;
         });
 
-        editTextEmail = findViewById(R.id.edtEmail);
-        editTextPassword = findViewById(R.id.edtPassword);
+        editTextEmail = findViewById(R.id.edt_mailid_login);
+        editTextPassword = findViewById(R.id.edt_pass_login);
 
         buttonReg = findViewById(R.id.btnLogin);
 
