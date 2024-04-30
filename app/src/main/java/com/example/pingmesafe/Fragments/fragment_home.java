@@ -3,12 +3,6 @@ package com.example.pingmesafe.Fragments;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-
-import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_HYBRID;
-import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL;
-import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_SATELLITE;
-import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_TERRAIN;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
@@ -22,12 +16,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupMenu;
 import android.widget.TextView;
-
 
 import com.example.pingemesafe.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -41,7 +32,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -57,16 +47,12 @@ import java.util.Objects;
 
 public class fragment_home extends Fragment implements OnMapReadyCallback{
     private final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("unsafe alerts");
-    private final DatabaseReference UserCurrentLocationDatabaseReference = FirebaseDatabase.getInstance().getReference("UserCurrentLocation");
     private static final String MAP_VIEW_STATE_KEY = "mapViewState";
     SupportMapFragment mapView;
     private GoogleMap googleMap;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
-    double latitude = 0;
-    double longitude = 0;
     Boolean userSOS = false;
     private FusedLocationProviderClient fusedLocationClient;
-    private OnMapReadyCallback callback = this;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,7 +83,7 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
         fetchDBData();
         if (ContextCompat.checkSelfPermission(requireContext(), ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(requireContext(), ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            googleMap.setMapType(MAP_TYPE_NORMAL);
+            //googleMap.setMapType(MAP_TYPE_NORMAL);
             googleMap.setMyLocationEnabled(true);
             //googleMap.getUiSettings().setMapToolbarEnabled(true);
             //googleMap.getUiSettings().setCompassEnabled(true);
@@ -205,7 +191,7 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
         return userSOS;
     }
 
-
+    //function to fetch data from realtime databse and add marker for all other user's sos alerts
     public void fetchDBData() {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("MissingPermission")
@@ -227,6 +213,8 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
         });
     }
 
+
+    //function to fetch user's unique alert ID from the internal device storage
     public String fetchAlertID(){
         StringBuilder content = new StringBuilder();
         try {
@@ -246,6 +234,7 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
         return content.toString();
     }
 
+    //function to add a marker on the map
     public void addMarker(double latitude, double longitude, String title, String alertMessage) {
         if (googleMap != null) {
 
@@ -254,6 +243,8 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
         }
     }
 
+
+    //these 4 functions are used to sove and restore the state of the mpa when it is cosed and reopened
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);

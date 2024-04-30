@@ -96,12 +96,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/layout_email"
-            android:layout_marginStart="@dimen/_7sdp">
+            android:layout_marginStart="@dimen/_6sdp">
 
             <ImageView
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/image_Notification"
                 android:layout_width="@dimen/_45sdp"
                 android:layout_height="@dimen/_45sdp"
