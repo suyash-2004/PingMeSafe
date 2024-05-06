@@ -146,6 +146,7 @@ public class HomeScreen_Activity extends AppCompatActivity {
 
     private void loadFragment(Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
+        //fm.popBackStack();
         FragmentTransaction ft = fm.beginTransaction();
         ft.setCustomAnimations(R.anim.fragment_enter, R.anim.fragment_exit);
         ft.replace(R.id.frame_layout, fragment);

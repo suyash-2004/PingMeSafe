@@ -41,12 +41,11 @@ public class Emergency_activity extends AppCompatActivity {
     AppCompatButton btn_back;
     double latitude;
     double longitude;
-    private String deviceName = android.os.Build.MODEL;
+    private final String deviceName = android.os.Build.MODEL;
     private String SOS_message="";
-    private String currentTime=getCurrentTime();
+    private final String currentTime=getCurrentTime();
     private String SOSname;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
-    private FusedLocationProviderClient fusedLocationClient;
 
     private final DatabaseReference AlertsdatabaseReference = FirebaseDatabase.getInstance().getReference("unsafe alerts");
     private String alertID;
@@ -142,9 +141,9 @@ public class Emergency_activity extends AppCompatActivity {
             if(!SOSMessage.getText().toString().isEmpty()){
                SOS_message = SOSMessage.getText().toString().trim();
                SOSname = name.getText().toString().trim();
+               getCurrentLocation();
             }
             dialog_SOS_message.dismiss();
-            getCurrentLocation();
         });
         dialog_SOS_message.show();
     }
@@ -157,7 +156,7 @@ public class Emergency_activity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else {
-            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+            FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
             fusedLocationClient.getLastLocation()
                     .addOnSuccessListener(this, location -> {
                         if (location != null) {

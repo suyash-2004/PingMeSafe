@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/scrollView"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_box"
+        android:padding="@dimen/_33sdp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_5sdp"
+                android:layout_height="@dimen/_5sdp"
+                android:src="@drawable/black_circle"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The"
+                android:fontFamily="@font/sourcesanssemibold"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/colortext"
+                android:layout_marginStart="@dimen/_10sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SOS"
+                android:fontFamily="@font/interbold"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/colorRed"
+                android:layout_marginStart="@dimen/_2sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="button is for emergencies only."
+                android:fontFamily="@font/sourcesanssemibold"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/colortext"
+                android:layout_marginStart="@dimen/_2sdp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_5sdp"
+                android:layout_height="@dimen/_5sdp"
+                android:src="@drawable/black_circle"
+                android:layout_gravity="top"
+                android:layout_marginTop="@dimen/_6sdp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please use it responsibly and only when you are in immediate danger and require urgent assistance."
+                android:fontFamily="@font/sourcesanssemibold"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/colortext"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:lineSpacingExtra="-5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_5sdp"
+                android:layout_height="@dimen/_5sdp"
+                android:src="@drawable/black_circle"
+                android:layout_gravity="top"
+                android:layout_marginTop="@dimen/_6sdp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="False alarms can delay help for those who need it most."
+                android:fontFamily="@font/sourcesanssemibold"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/colortext"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:lineSpacingExtra="-5dp"/>
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_120sdp"
+                android:src="@drawable/warning_img_2"
+                android:layout_gravity="center_vertical"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This will mark you as unsafe on the map,"
+                android:fontFamily="@font/sourcesanssemibold"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/colortext"
+                android:lineSpacingExtra="-5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Are you sure you want to continue?"
+                android:fontFamily="@font/ubuntubold"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/colortext"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:lineSpacingExtra="-5dp"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@drawable/login_btn_bkg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:text="YES, I Need Help"
+            android:textAlignment="gravity"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16ssp"
+            android:fontFamily="@font/interbold"/>
+
+    </LinearLayout>
+
+</ScrollView>

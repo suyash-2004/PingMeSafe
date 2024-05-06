@@ -1,108 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.pingmesafe.Activities.Emergency_activity"
-    android:background="@drawable/emergencybkg">
+    android:id="@+id/login_layout">
 
+    <RelativeLayout
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_Back"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:background="@drawable/back_foreground"
-            android:layout_margin="@dimen/_10sdp"
-            app:layout_constraintStart_toStartOf="parent"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_320sdp"
+            android:src="@drawable/Emergency_pic"
+            android:gravity="top"
+            android:scaleType="fitXY"
             app:layout_constraintTop_toTopOf="parent"
-            android:backgroundTint="@color/white"/>
+            android:fitsSystemWindows="true"
+            android:cropToPadding="false"
+            android:contentDescription="@string/app_name"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/emergency_text_and_logo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_60sdp"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_SOS"
+            android:src="@drawable/elipse"/>
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_sos"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_330sdp"
-            android:elevation="@dimen/_10sdp"/>
+            android:src="@drawable/iconback"
+            android:scaleY="1.6"
+            android:scaleX="1.6"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_25sdp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_170sdp">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_Call"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            app:layout_constraintTop_toBottomOf="@+id/btn_SOS"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/call_button"
-            app:elevation="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_20sdp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Emergency"
+                android:textSize="@dimen/_29ssp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/interbold"/>
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="@dimen/_30sdp"
-        app:cardCornerRadius="@dimen/_20sdp"
-        app:cardElevation="@dimen/_5sdp">
+            <TextView
+                android:layout_width="350sp"
+                android:layout_height="match_parent"
+                android:text="@string/an_open_source_disaster_recovery_and_management_app"
+                android:textSize="@dimen/_12ssp"
+                android:fontFamily="@font/intermedium"
+                android:textColor="@color/white"/>
+        </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_gravity="center"
-            android:background="@drawable/bottom_nav_bkg">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
 
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/btn_ambulance_emergency"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
-                android:src="@drawable/ambulance_logo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btn_police_emergency"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:layout_marginStart="@dimen/_5sdp"/>
+            <include layout="@layout/emergency_layout"
+                android:layout_height="@dimen/_430sdp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_210sdp" />
 
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/btn_police_emergency"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
-                android:src="@drawable/police_logo"
-                app:layout_constraintStart_toEndOf="@id/btn_ambulance_emergency"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btn_fire_emergency"
-                android:layout_marginEnd="@dimen/_5sdp"/>
+        </LinearLayout>
 
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/btn_fire_emergency"
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
-                android:src="@drawable/fire_logo"
-                app:layout_constraintStart_toEndOf="@id/btn_police_emergency"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="@dimen/_5sdp"/>
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

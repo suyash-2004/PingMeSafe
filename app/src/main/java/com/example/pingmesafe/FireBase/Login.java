@@ -27,7 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class Login extends AppCompatActivity {
 
     EditText editTextEmail , editTextPassword;
-    Button buttonReg;
+    Button buttonLogin;
     FirebaseAuth mAuth;
 
     @Override
@@ -56,9 +56,9 @@ public class Login extends AppCompatActivity {
         editTextEmail = findViewById(R.id.edt_mailid_login);
         editTextPassword = findViewById(R.id.edt_pass_login);
 
-        buttonReg = findViewById(R.id.btnLogin);
+        buttonLogin = findViewById(R.id.btnLogin);
 
-        buttonReg.setOnClickListener(new View.OnClickListener() {
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email, password;
@@ -99,7 +99,8 @@ public class Login extends AppCompatActivity {
                                     //updateUI(null);
                                 }
                             }
-                        });
+                        }
+                        );
             }
         });
     }
