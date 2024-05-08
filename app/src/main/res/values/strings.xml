@@ -107,5 +107,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="phnum">Phone Number</string>
     <string name="pass">Password</string>
+    <string name="profile">Profile</string>
+    <string name="log_out">Log Out</string>
 
 </resources>

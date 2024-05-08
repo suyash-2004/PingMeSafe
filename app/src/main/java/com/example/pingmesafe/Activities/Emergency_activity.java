@@ -12,6 +12,8 @@ import androidx.core.content.ContextCompat;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -53,10 +55,9 @@ public class Emergency_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_emergency);
+        setContentView(R.layout.fragment_emergency);
 
-        btn_SOS = findViewById(R.id.btn_SOS);
-        btn_call = findViewById(R.id.btn_Call);
+        btn_SOS = findViewById(R.id.btn_needHelp);
 
         if(!fileExists("FireBaseAlretID.txt")) {
 
@@ -132,6 +133,8 @@ public class Emergency_activity extends AppCompatActivity {
     private void ShowSOSMessageDialog() {
         Dialog dialog_SOS_message = new Dialog(this);
         dialog_SOS_message.setContentView(R.layout.sos_dialog_message);
+
+        dialog_SOS_message.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         EditText SOSMessage = dialog_SOS_message.findViewById(R.id.edt_SOSMsg);
         EditText name = dialog_SOS_message.findViewById(R.id.edt_name);

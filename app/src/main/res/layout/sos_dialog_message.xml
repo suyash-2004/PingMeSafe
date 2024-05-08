@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/sos_dialog_bkg"
+    app:layout_constraintCircleRadius="@dimen/_20sdp"
     android:paddingStart="@dimen/_30sdp"
     android:paddingTop="@dimen/_30sdp"
     android:paddingEnd="@dimen/_30sdp">
-
 
     <TextView
         android:id="@+id/txt_entername"
@@ -21,10 +20,11 @@
         android:textColor="@color/black"
         android:fontFamily="@font/ubuntubold"
         android:layout_marginBottom="@dimen/_7sdp"/>
+
     <EditText
         android:id="@+id/edt_name"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_35sdp"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_entername"
@@ -32,6 +32,7 @@
         android:background="@drawable/rounded_box"
         android:ems="20"
         android:gravity="top"
+        android:layout_below="@id/txt_entername"
         android:textColor="@color/black"
         android:textAlignment="gravity"
         android:cursorVisible="true"
@@ -42,6 +43,7 @@
 
     <TextView
         android:id="@+id/txt_entermsg"
+        android:layout_below="@id/edt_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/enter_sos_message"
@@ -52,8 +54,10 @@
         android:textColor="@color/black"
         android:fontFamily="@font/ubuntubold"
         android:layout_marginBottom="@dimen/_7sdp"/>
+
     <EditText
         android:id="@+id/edt_SOSMsg"
+        android:layout_below="@id/txt_entermsg"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100sdp"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,10 +76,13 @@
         android:id="@+id/btn_send_sos"
         android:layout_width="@dimen/_80sdp"
         android:layout_height="@dimen/_30sdp"
+        android:layout_below="@id/edt_SOSMsg"
+        android:layout_alignEnd="@id/edt_SOSMsg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edt_SOSMsg"
         android:background="@drawable/btn_send_sos"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_20sdp"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

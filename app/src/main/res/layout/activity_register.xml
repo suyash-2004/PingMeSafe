@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.pingmesafe.Activities.Register_Activity">
 
+
     <RelativeLayout
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
@@ -65,18 +66,20 @@
             android:layout_centerHorizontal="true">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImage"
                 android:layout_width="@dimen/_140sdp"
                 android:layout_height="@dimen/_140sdp"
                 android:src="@drawable/avatar1" />
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/btn_edit_profile_pic"
                 android:layout_width="60dp"
-                android:layout_height="70dp"
+                android:layout_height="60dp"
                 android:src="@drawable/edit_icno"
                 android:background="@null"
-                android:scaleY="1.3"
-                android:scaleX="1.3"
-                android:layout_marginTop="@dimen/_95sdp"
+                android:scaleY="1.5"
+                android:scaleX="1.5"
+                android:layout_marginTop="@dimen/_100sdp"
                 android:layout_marginStart="@dimen/_95sdp"/>
 
 
@@ -110,5 +113,27 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="@color/colorDarkbkgwithTransparency">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_centerInParent="true"
+            android:progress="@integer/material_motion_duration_long_1"
+            android:visibility="visible"
+            android:background="@drawable/rounded_box_purple_all_corners_round"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

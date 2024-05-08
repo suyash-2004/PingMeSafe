@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.pingmesafe.Fragments.fragment_prepare"
+    android:layout_gravity="center_horizontal">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/heading"
+            android:background="@drawable/rounded_box_purple"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prepare"
+                android:fontFamily="@font/ubuntubold"
+                android:textSize="@dimen/_25sdp"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginBottom="@dimen/_15sdp"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/rounded_box"
+            android:backgroundTint="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/heading"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/_15sdp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"/>
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

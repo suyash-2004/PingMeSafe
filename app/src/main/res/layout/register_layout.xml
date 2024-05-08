@@ -3,21 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:id="@+id/scrollView"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:background="@drawable/rounded_box">
 
     <ScrollView
+        android:id="@+id/scrollview_register"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/_50sdp"
         android:layout_marginBottom="@dimen/_20sdp"
         android:fadeScrollbars="false"
-        android:scrollbars="none"
-        tools:ignore="UselessParent">
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/register"
                 android:fontFamily="@font/sourcesanssemibold"
                 android:textSize="@dimen/_20ssp"
@@ -35,8 +35,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:fitsSystemWindows="true">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_name"
@@ -164,7 +165,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_pass"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     app:layout_constraintTop_toBottomOf="@id/layout_email"
                     app:layout_constraintStart_toStartOf="parent"
@@ -207,8 +208,8 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_DobnPhone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -261,7 +262,7 @@
                         android:layout_marginStart="@dimen/_27sdp"/>
 
                     <EditText
-                        android:id="@+id/edt_phone"
+                        android:id="@+id/edt_number"
                         app:layout_constraintStart_toEndOf="@id/edt_dob_register"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"

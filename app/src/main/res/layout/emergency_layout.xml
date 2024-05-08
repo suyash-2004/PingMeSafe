@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/scrollView"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/rounded_box"
-        android:padding="@dimen/_33sdp">
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_box"
+    android:padding="@dimen/_33sdp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -148,7 +143,7 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogin"
+            android:id="@+id/btn_needHelp"
             android:layout_width="@dimen/_250sdp"
             android:layout_height="@dimen/_50sdp"
             android:background="@drawable/login_btn_bkg"
@@ -159,8 +154,8 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/_16ssp"
-            android:fontFamily="@font/interbold"/>
+            android:fontFamily="@font/interbold"
+            android:layout_marginBottom="@dimen/_70sdp"/>
 
     </LinearLayout>
 
-</ScrollView>

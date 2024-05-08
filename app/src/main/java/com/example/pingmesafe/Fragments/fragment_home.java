@@ -11,16 +11,25 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pingemesafe.R;
+import com.example.pingmesafe.Activities.HomeScreen_Activity;
+import com.example.pingmesafe.MainActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,6 +41,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,6 +60,8 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
     private static final String MAP_VIEW_STATE_KEY = "mapViewState";
     SupportMapFragment mapView;
     private GoogleMap googleMap;
+    ImageView profilePicture;
+
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
     Boolean userSOS = false;
     private FusedLocationProviderClient fusedLocationClient;
@@ -72,6 +84,15 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
             getChildFragmentManager().beginTransaction().replace(R.id.map, mapView).commit();
         }
         mapView.getMapAsync(this);
+
+        profilePicture = view.findViewById(R.id.image_profile);
+        profilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showProfileDialog(profilePicture);
+            }
+        });
+
         return view;
     }
 
@@ -123,7 +144,6 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
                 if (Objects.equals(snapshot.getKey(), fetchAlertID())) {
-                    userSOS=false;
                     googleMap.setMyLocationEnabled(true);
                 }
                 fetchDBData();
@@ -168,6 +188,7 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
                 }
             });
         }
+
     }
 
     @Override
@@ -215,24 +236,31 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
 
 
     //function to fetch user's unique alert ID from the internal device storage
-    public String fetchAlertID(){
+    public String fetchAlertID() {
         StringBuilder content = new StringBuilder();
-        try {
-            FileInputStream fis = requireActivity().openFileInput("FireBaseAlretID.txt");
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader br = new BufferedReader(isr);
-            String line;
-            while ((line = br.readLine()) != null) {
-                content.append(line);
+        if (getActivity() != null) {
+            try {
+                FileInputStream fis = getActivity().openFileInput("FireBaseAlretID.txt");
+                InputStreamReader isr = new InputStreamReader(fis);
+                BufferedReader br = new BufferedReader(isr);
+                String line;
+                while ((line = br.readLine()) != null) {
+                    content.append(line);
+                }
+                br.close();
+                isr.close();
+                fis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            br.close();
-            isr.close();
-            fis.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            // Handle the case where getActivity() returns null
+            // You can log an error or show a message to indicate the issue
         }
         return content.toString();
     }
+
+
 
     //function to add a marker on the map
     public void addMarker(double latitude, double longitude, String title, String alertMessage) {
@@ -241,6 +269,59 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
             MarkerOptions markerOptions = new MarkerOptions().position(new LatLng(latitude, longitude)).title(title).snippet(alertMessage).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_sos));
             googleMap.addMarker(markerOptions);
         }
+    }
+
+    private void showProfileDialog(View anchorView) {
+        // Create dialog instance
+        Dialog dialog = new Dialog(requireContext());
+        dialog.setContentView(R.layout.profile_clicked_dialog);
+
+        // Find buttons in dialog layout
+        AppCompatButton profileButton = dialog.findViewById(R.id.btn_profile);
+        AppCompatButton logoutButton = dialog.findViewById(R.id.btn_logout);
+
+        // Set OnClickListener for profile button
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                // Navigate to profile activity or perform other actions
+            }
+        });
+
+        // Set OnClickListener for logout button
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle logout button click
+                // Close dialog if needed
+                dialog.dismiss();
+                logout(v);
+            }
+        });
+
+        // Show dialog without dark background
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        // Calculate x and y coordinates to position the dialog just below the anchor view (profile picture)
+        int[] location = new int[2];
+        anchorView.getLocationInWindow(location);
+        int anchorX = location[0];
+        int anchorY = location[1] + anchorView.getHeight(); // Place below the anchor view
+        dialog.getWindow().setGravity(Gravity.TOP | Gravity.START);
+        WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
+        layoutParams.x = anchorX;
+        layoutParams.y = anchorY;
+        dialog.getWindow().setAttributes(layoutParams);
+
+        // Show the dialog
+        dialog.show();
+    }
+
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(requireActivity(), MainActivity.class));
+        requireActivity().finish();
     }
 
 

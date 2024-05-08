@@ -1,8 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    tools:context="com.example.pingmesafe.Activities.Emergency_activity"
+    android:id="@+id/emergency_layout">
 
     <!-- Google Map fragment -->
     <fragment
@@ -124,6 +126,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </FrameLayout>

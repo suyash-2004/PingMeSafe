@@ -22,6 +22,7 @@
     <color name="colorOutlineDark">#292929</color>
     <color name="colorSurface">#FFFFFF</color> <!-- Background color for surfaces -->
     <color name="colorOnSurface">#000000</color> <!-- Text color for surfaces -->
+    <color name="colorDarkbkgwithTransparency">#7A000000</color>
 
 
 </resources>
