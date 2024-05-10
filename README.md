@@ -23,20 +23,16 @@ To get started with the PingMeSafe Android app, follow these steps:
 
 ## Contributing
 
-We welcome contributions from the community to improve and enhance the PingMeSafe Android app. If you'd like to contribute, please follow these guidelines:
+We currently do not accept contributions to this repository. However, stay tuned as we will soon open the window for contributions. Thank you for your interest in improving and enhancing PingMeSafe!
 
-- Fork the repository.
-- Create a new branch for your feature or bug fix.
-- Make your changes and ensure they pass any existing tests.
-- Test your changes thoroughly.
-- Create a pull request with a clear description of your changes.
+## Future Developments
+
+While this repository hosts the Android app, we have plans to develop PingMeSafe for all platforms, including web and iOS. Stay updated for future announcements regarding the expansion of PingMeSafe to other platforms.
+
+## Bug Reports and Feature Suggestions
+
+For any updates, bug reports, or feature suggestions related to the PingMeSafe Android app, please contact us at [pingmesafe@gmail.com](mailto:pingmesafe@gmail.com). Your feedback is valuable to us as we strive to make PingMeSafe the best it can be.
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
-## Contact
-
-For any inquiries or support related to the PingMeSafe Android app, please contact us at [pingmesafe@gmail.com](mailto:pingmesafe@gmail.com).
-
-We are also looking for developers to support us in building the web and iOS platform apps. If you're interested, please reach out to our official email address.
