@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.pingemesafe.R;
+import com.example.pingmesafe.R;
 
 public class fragment_recover extends Fragment {
 

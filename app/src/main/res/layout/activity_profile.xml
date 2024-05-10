@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.example.pingmesafe.Activities.Register_Activity">
 
 
@@ -57,15 +58,14 @@
             android:id="@+id/layout_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/layout_registerbtn">
+            android:layout_alignParentBottom="true">
 
 
             <include
-                layout="@layout/register_layout"
+                layout="@layout/profile_layout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_430sdp"
-                android:layout_marginTop="@dimen/_150sdp"
-                android:layout_marginBottom="@dimen/_10sdp"/>
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_150sdp" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -81,13 +81,15 @@
             android:layout_centerHorizontal="true">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileImage"
+                android:id="@+id/profileImage_profile"
                 android:layout_width="@dimen/_140sdp"
                 android:layout_height="@dimen/_140sdp"
-                android:src="@drawable/avatar1" />
+                app:civ_border_color="@color/black"
+                app:civ_border_width="@dimen/_2sdp"
+                android:src="@drawable/defaultprofileimage" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_edt_register"
+                android:id="@+id/btn_edit_profile_pic"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@drawable/edit_icno"
@@ -100,55 +102,27 @@
 
         </RelativeLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_registerbtn"
+        <LinearLayout
+            android:id="@+id/layout_progressbarProfile"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center"
+            android:visibility="gone"
+            android:background="@color/colorDarkbkgwithTransparency">
 
-            <androidx.appcompat.widget.AppCompatButton
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:id="@+id/btnRegister"
-                android:layout_width="@dimen/_250sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:background="@drawable/login_btn_bkg"
-                android:layout_gravity="center_horizontal"
-                android:text="Register"
-                android:textAlignment="gravity"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_16ssp"
-                android:fontFamily="@font/interbold" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_centerInParent="true"
+                android:progress="@integer/material_motion_duration_long_1"
+                android:visibility="visible"
+                android:background="@drawable/rounded_box_purple_all_corners_round"/>
+        </LinearLayout>
     </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_progressbarRegister"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:gravity="center"
-        android:visibility="gone"
-        android:background="@color/colorDarkbkgwithTransparency">
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_80sdp"
-            android:layout_centerInParent="true"
-            android:progress="@integer/material_motion_duration_long_1"
-            android:visibility="visible"
-            android:background="@drawable/rounded_box_purple_all_corners_round"/>
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

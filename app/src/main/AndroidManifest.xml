@@ -17,35 +17,29 @@
         android:supportsRtl="true"
         tools:targetApi="33">
 
-        <!--
-             TODO: Before you run your application, you need a Google Maps API key.
+        <activity
+            android:name=".Activities.Profile_Activity"
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
 
-             To get one, follow the directions here:
-
-                https://developers.google.com/maps/documentation/android-sdk/get-api-key
-
-             Once you have your API key (it starts with "AIza"), define a new property in your
-             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
-             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
-        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDbsSVsFwNqPjo7IiwprmzrosCGN5CmjYY" />
 
         <activity
-            android:name="com.example.pingmesafe.Activities.Emergency_activity"
+            android:name=".Activities.Emergency_activity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.pingmesafe.Activities.Register_Activity"
+            android:name=".Activities.Register_Activity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.pingmesafe.Activities.HomeScreen_Activity"
+            android:name=".Activities.HomeScreen_Activity"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.example.pingmesafe.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>

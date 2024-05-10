@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.pingemesafe"
+    namespace = "com.example.pingmesafe"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.pingemesafe"
+        applicationId = "com.example.pingmesafe"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -52,7 +52,9 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment:2.7.7")
     implementation("androidx.navigation:navigation-ui:2.7.7")
-
+    implementation ("com.google.firebase:firebase-auth:23.0.0")
+    implementation ("com.google.android.gms:play-services-auth:21.1.1")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
     annotationProcessor ("androidx.room:room-compiler:2.6.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
@@ -64,10 +66,18 @@ dependencies {
     implementation ("com.intuit.ssp:ssp-android:1.1.1")
     implementation ("com.google.android.material:material:<version>")
     implementation ("com.makeramen:roundedimageview:2.3.0")
-    implementation ("com.squareup.picasso:picasso:2.5.2")
+    implementation ("com.squareup.picasso:picasso:2.71828")
     implementation ("androidx.activity:activity:1.9.0")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("com.squareup.picasso:picasso:2.71828")
+    implementation ("com.google.android.gms:play-services-auth:21.1.1")
+    implementation ("androidx.credentials:credentials:1.3.0-alpha03")
+
+    // optional - needed for credentials support from play services, for devices running
+    // Android 13 and below.
+    implementation ("androidx.credentials:credentials-play-services-auth:1.3.0-alpha03")
+    implementation ("com.google.android.gms:play-services-auth:21.1.1")
+
 
     testImplementation ("junit:junit:4.13.2")
 
@@ -84,3 +94,4 @@ dependencies {
 
 
 }
+

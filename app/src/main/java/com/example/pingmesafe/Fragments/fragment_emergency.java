@@ -4,11 +4,14 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,8 +21,10 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.pingmesafe.Activities.Emergency_activity;
 import com.example.pingmesafe.Activities.HomeScreen_Activity;
 import com.example.pingmesafe.FireBase.UnSafe_Alert_Model;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -36,17 +41,17 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-import com.example.pingemesafe.R;
+import com.example.pingmesafe.R;
 
 public class fragment_emergency extends Fragment {
 
-    private AppCompatButton btn_sos_dialog_YES;
-    private AppCompatButton btn_sos_dialog_Cancel;
     private double latitude;
     private double longitude;
     private final String deviceName = android.os.Build.MODEL;
     private String SOS_message = "";
-    private final String currentTime = getCurrentTime();
+    RelativeLayout btn_back;
+
+    private String Time;
     private String SOSname;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
 
@@ -65,15 +70,151 @@ public class fragment_emergency extends Fragment {
 
 
         AppCompatButton btn_needHelp = view.findViewById(R.id.btn_needHelp);
+        btn_needHelp.setOnClickListener(v -> {
+            ShowSOSMessageDialog();
+        });
+
+
         AlertsdatabaseReference = FirebaseDatabase.getInstance().getReference("unsafe alerts");
 
-        if (!fileExists("FireBaseAlretID.txt")) {
-            alertID = AlertsdatabaseReference.push().getKey();
-            createTextFile("FireBaseAlretID.txt", alertID);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (!fileExists("FireBaseAlretID.txt")) {
+                    alertID = AlertsdatabaseReference.push().getKey();
+                    createTextFile("FireBaseAlretID.txt", alertID);
+                } else {
+                    StringBuilder content = new StringBuilder();
+                    try {
+                        FileInputStream fis = requireContext().openFileInput("FireBaseAlretID.txt");
+                        InputStreamReader isr = new InputStreamReader(fis);
+                        BufferedReader br = new BufferedReader(isr);
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            content.append(line);
+                        }
+                        br.close();
+                        isr.close();
+                        fis.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    alertID = content.toString();
+                }
+
+            }
+        }).start();
+
+        btn_back = view.findViewById(R.id.layout_btn_back_emergency);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requireActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+
+
+    }
+
+    private String getCurrentTime(){
+        final String[] time = new String[1];
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                time[0] = sdf.format(calendar.getTime());
+            }
+        }).start();
+        return time[0];
+    }
+
+     private void ShowSOSMessageDialog() {
+        Dialog dialog_SOS_message = new Dialog(requireActivity());
+        dialog_SOS_message.setContentView(R.layout.sos_dialog_message);
+        dialog_SOS_message.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        EditText SOSMessage = dialog_SOS_message.findViewById(R.id.edt_SOSMsg);
+        AppCompatButton btn_send_sos = dialog_SOS_message.findViewById(R.id.btn_send_sos);
+
+        btn_send_sos.setOnClickListener(v1 -> {
+            if(!SOSMessage.getText().toString().isEmpty()){
+                SOS_message = SOSMessage.getText().toString().trim();
+                SOSname = GoogleSignIn.getLastSignedInAccount(requireActivity()).getDisplayName();
+                alertID = fetchAlertID();
+                Time = getCurrentTime();
+
+                double[] coordinates = getCurrentLocation();
+                latitude = coordinates[0];
+                longitude = coordinates[1];
+
+                FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext());
+                SendSOSAlert(fusedLocationClient);
+            }
+            dialog_SOS_message.dismiss();
+        });
+        dialog_SOS_message.show();
+    }
+
+    private void createTextFile(String fileName, String alertID) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    FileOutputStream fos = requireContext().openFileOutput(fileName, Context.MODE_PRIVATE);
+                    fos.write(alertID.getBytes());
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    private boolean fileExists(String fileName) {
+        File file = new File(requireContext().getFilesDir(), fileName);
+        return file.exists();
+    }
+
+    private void SendSOSAlert(FusedLocationProviderClient fusedLocationClient) {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else {
-            StringBuilder content = new StringBuilder();
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(requireActivity(), location -> {
+                        if (location != null) {
+                            latitude = location.getLatitude();
+                            longitude = location.getLongitude();
+                            AlertsdatabaseReference.child(alertID).setValue(new UnSafe_Alert_Model(latitude, longitude, SOSname, SOS_message, deviceName, Time));
+                        }
+                    });
+        }
+    }
+
+    private double[] getCurrentLocation() {
+        double[] coordinates = new double[2];
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+        } else {
+            FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext());
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(requireActivity(), location -> {
+                        if (location != null) {
+                            coordinates[0] = location.getLatitude();
+                            coordinates[1] = location.getLongitude();
+                        }
+                    });
+        }
+        return coordinates;
+    }
+
+    public String fetchAlertID() {
+        StringBuilder content = new StringBuilder();
+        if (getActivity() != null) {
             try {
-                FileInputStream fis = requireContext().openFileInput("FireBaseAlretID.txt");
+                FileInputStream fis = getActivity().openFileInput("FireBaseAlretID.txt");
                 InputStreamReader isr = new InputStreamReader(fis);
                 BufferedReader br = new BufferedReader(isr);
                 String line;
@@ -86,91 +227,10 @@ public class fragment_emergency extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            alertID = content.toString();
-        }
-
-        btn_needHelp.setOnClickListener(v -> {
-            showSOSMessageDialog();
-        });
-    }
-
-    private String getCurrentTime() {
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        return sdf.format(calendar.getTime());
-    }
-
-    public void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        //fm.popBackStack();
-        transaction.setCustomAnimations(R.anim.slide_in,  // enter
-                R.anim.fade_out,  // exit
-                R.anim.fade_in,   // popEnter
-                R.anim.slide_out);
-        transaction.replace(R.id.frame_layout, fragment);
-        transaction.commit();
-    }
-
-    private void showSOSMessageDialog() {
-        Dialog dialog_SOS_message = new Dialog(requireContext());
-        dialog_SOS_message.setContentView(R.layout.sos_dialog_message);
-
-        EditText SOSMessage = dialog_SOS_message.findViewById(R.id.edt_SOSMsg);
-        EditText name = dialog_SOS_message.findViewById(R.id.edt_name);
-        AppCompatButton btn_send_sos = dialog_SOS_message.findViewById(R.id.btn_send_sos);
-        AppCompatButton btn_cancel = dialog_SOS_message.findViewById(R.id.btn_send_sos);
-
-        btn_send_sos.setOnClickListener(v1 -> {
-            if (!SOSMessage.getText().toString().isEmpty()) {
-                SOS_message = SOSMessage.getText().toString().trim();
-                SOSname = name.getText().toString().trim();
-                getCurrentLocation();
-                loadFragment(new fragment_home());
-            }
-            dialog_SOS_message.dismiss();
-        });
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               dialog_SOS_message.dismiss();
-            }
-        });
-        dialog_SOS_message.show();
-    }
-
-    private void createTextFile(String fileName, String alertID) {
-        try {
-            FileOutputStream fos = requireContext().openFileOutput(fileName, Context.MODE_PRIVATE);
-            fos.write(alertID.getBytes());
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private boolean fileExists(String fileName) {
-        File file = new File(requireContext().getFilesDir(), fileName);
-        return file.exists();
-    }
-
-    private void sendSOSAlert() {
-        AlertsdatabaseReference.child(alertID).setValue(new UnSafe_Alert_Model(latitude, longitude, SOSname, SOS_message, deviceName, currentTime));
-    }
-
-    private void getCurrentLocation() {
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else {
-            FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext());
-            fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(requireActivity(), location -> {
-                        if (location != null) {
-                            latitude = location.getLatitude();
-                            longitude = location.getLongitude();
-                            sendSOSAlert();
-                        }
-                    });
+            // Handle the case where getActivity() returns null
+            // You can log an error or show a message to indicate the issue
         }
+        return content.toString();
     }
 }

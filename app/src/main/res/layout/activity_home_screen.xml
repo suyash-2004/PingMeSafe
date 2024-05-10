@@ -10,10 +10,14 @@
     android:background="@color/black"
     tools:context="com.example.pingmesafe.Activities.HomeScreen_Activity">
 
+
+
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:layout_width="match_parent"

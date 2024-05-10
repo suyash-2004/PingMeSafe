@@ -3,33 +3,34 @@ package com.example.pingmesafe.Fragments;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
+import static androidx.browser.customtabs.CustomTabsClient.getPackageName;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
-import com.example.pingemesafe.R;
-import com.example.pingmesafe.Activities.HomeScreen_Activity;
-import com.example.pingmesafe.MainActivity;
+import com.bumptech.glide.Glide;
+import com.example.pingmesafe.Activities.Profile_Activity;
+import com.example.pingmesafe.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -42,6 +43,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -53,6 +55,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Objects;
 
 public class fragment_home extends Fragment implements OnMapReadyCallback{
@@ -60,7 +63,13 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
     private static final String MAP_VIEW_STATE_KEY = "mapViewState";
     SupportMapFragment mapView;
     private GoogleMap googleMap;
-    ImageView profilePicture;
+    public AppCompatImageView profilePicture;
+    SearchView searchView;
+
+
+    View viewTemp;
+    private FirebaseAuth mAuth;
+    FirebaseUser user;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
     Boolean userSOS = false;
@@ -78,21 +87,30 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        viewTemp = view;
         mapView = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+
         if (mapView == null) {
             mapView = SupportMapFragment.newInstance();
             getChildFragmentManager().beginTransaction().replace(R.id.map, mapView).commit();
         }
-        mapView.getMapAsync(this);
 
         profilePicture = view.findViewById(R.id.image_profile);
+        searchView = view.findViewById(R.id.search_view);
+
+        mapView.getMapAsync(this);
+
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
+        setProfilePic(user.getPhotoUrl());
+
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showProfileDialog(profilePicture);
+                startActivity(new Intent(requireActivity(), Profile_Activity.class));
             }
         });
-
         return view;
     }
 
@@ -102,6 +120,22 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
         googleMap = map;
         googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(),R.raw.map_style));
         fetchDBData();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchView.clearFocus();
+                searchView.setQuery(query, false);
+                searchView.requestFocusFromTouch();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
         if (ContextCompat.checkSelfPermission(requireContext(), ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(requireContext(), ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             //googleMap.setMapType(MAP_TYPE_NORMAL);
@@ -188,7 +222,61 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
                 }
             });
         }
+        initiateSearch();
+    }
 
+    private void initiateSearch() {
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // When the search button is pressed, get the latitude and longitude of the searched location
+                Geocoder geocoder = new Geocoder(requireContext());
+                try {
+                    List<Address> addresses = geocoder.getFromLocationName(query, 1);
+                    assert addresses != null;
+                    if (!addresses.isEmpty()) {
+                        Address address = addresses.get(0);
+                        double latitude = address.getLatitude();
+                        double longitude = address.getLongitude();
+
+                        // Add a marker on the searched location
+                        addMarkerSearchLocation(latitude, longitude, "Searched Location", query);
+
+                        // Move the camera to the searched location
+                        LatLng latLng = new LatLng(latitude, longitude);
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                // Close the SearchView
+                searchView.clearFocus();
+                searchView.setQuery("", false);
+                searchView.onActionViewCollapsed();
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+    }
+    public void addMarkerSearchLocation(double latitude, double longitude, String title, String snippet) {
+        if (googleMap != null) {
+            MarkerOptions markerOptions = new MarkerOptions().position(new LatLng(latitude, longitude)).title(snippet).snippet(title).icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_location));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
+            googleMap.addMarker(markerOptions);
+        }
+    }
+
+    public void setProfilePic(Uri imageUri){
+        Glide.with(this)
+                .load(imageUri)
+                .into(profilePicture);
     }
 
     @Override
@@ -196,7 +284,6 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.map_type_menu, menu);
     }
-
 
     private boolean isUserSOS() {
         databaseReference.child(fetchAlertID()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -234,7 +321,6 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
         });
     }
 
-
     //function to fetch user's unique alert ID from the internal device storage
     public String fetchAlertID() {
         StringBuilder content = new StringBuilder();
@@ -271,59 +357,6 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
         }
     }
 
-    private void showProfileDialog(View anchorView) {
-        // Create dialog instance
-        Dialog dialog = new Dialog(requireContext());
-        dialog.setContentView(R.layout.profile_clicked_dialog);
-
-        // Find buttons in dialog layout
-        AppCompatButton profileButton = dialog.findViewById(R.id.btn_profile);
-        AppCompatButton logoutButton = dialog.findViewById(R.id.btn_logout);
-
-        // Set OnClickListener for profile button
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                // Navigate to profile activity or perform other actions
-            }
-        });
-
-        // Set OnClickListener for logout button
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle logout button click
-                // Close dialog if needed
-                dialog.dismiss();
-                logout(v);
-            }
-        });
-
-        // Show dialog without dark background
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        // Calculate x and y coordinates to position the dialog just below the anchor view (profile picture)
-        int[] location = new int[2];
-        anchorView.getLocationInWindow(location);
-        int anchorX = location[0];
-        int anchorY = location[1] + anchorView.getHeight(); // Place below the anchor view
-        dialog.getWindow().setGravity(Gravity.TOP | Gravity.START);
-        WindowManager.LayoutParams layoutParams = dialog.getWindow().getAttributes();
-        layoutParams.x = anchorX;
-        layoutParams.y = anchorY;
-        dialog.getWindow().setAttributes(layoutParams);
-
-        // Show the dialog
-        dialog.show();
-    }
-
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(requireActivity(), MainActivity.class));
-        requireActivity().finish();
-    }
-
 
     //these 4 functions are used to sove and restore the state of the mpa when it is cosed and reopened
     @Override
@@ -342,6 +375,10 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
 
     @Override
     public void onResume() {
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        assert user != null;
+        setProfilePic(user.getPhotoUrl());
         super.onResume();
         fetchDBData();
     }
@@ -353,4 +390,13 @@ public class fragment_home extends Fragment implements OnMapReadyCallback{
             mapView.onPause();
         }
     }
+
+//    public void setProfilePic(int image) {
+//        profilePicture = viewTemp.findViewById(R.id.image_profile);
+//        profilePicture.setImageResource(image);
+//    }
+//
+//    public void setProfilePic(Uri image) {
+//        Glide.with(this).load(image).into(profilePicture);
+//    }
 }

@@ -2,22 +2,11 @@ package com.example.pingmesafe.FireBase;
 
 import android.net.Uri;
 
-public class User_Data_Model {
+public class User_Data_Google_Model {
 
     String fname, lname,  email,  dob,  number;
     double latitude, longitude;
-    int selected_profile_image;
-
-    public User_Data_Model() {
-    }
-
-    public int getSelected_profile_image() {
-        return selected_profile_image;
-    }
-
-    public void setSelected_profile_image(int selected_profile_image) {
-        this.selected_profile_image = selected_profile_image;
-    }
+    String selectedProfileImageUrl;
 
     public String getFname() {
         return fname;
@@ -75,14 +64,20 @@ public class User_Data_Model {
         this.longitude = longitude;
     }
 
-    public User_Data_Model(String fname, String lname, String email, String dob, String number, double latitude, double longitude, int selected_profile_image) {
+    public User_Data_Google_Model(String fname, String lname, String email, double latitude, double longitude, Uri selected_profile_image) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
-        this.dob = dob;
-        this.number = number;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.selected_profile_image = selected_profile_image;
+        this.selectedProfileImageUrl = selected_profile_image.toString(); // Convert Uri to string
+    }
+
+    public String getSelectedProfileImageUrl() {
+        return selectedProfileImageUrl;
+    }
+
+    public void setSelectedProfileImageUrl(String selectedProfileImageUrl) {
+        this.selectedProfileImageUrl = selectedProfileImageUrl;
     }
 }

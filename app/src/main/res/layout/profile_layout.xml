@@ -7,10 +7,10 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_box">
+    android:background="@drawable/rounded_box_without_stroke">
 
     <ScrollView
-        android:id="@+id/scrollview_register"
+        android:id="@+id/scrollview_profile"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/_50sdp"
         android:layout_marginBottom="@dimen/_20sdp"
@@ -22,18 +22,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/register"
+                android:text="Profile"
                 android:fontFamily="@font/sourcesanssemibold"
-                android:textSize="@dimen/_20ssp"
+                android:textSize="@dimen/_35ssp"
                 android:textColor="@color/colortext"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:layout_marginStart="@dimen/_25sdp"/>
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_20sdp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
 
                     <TextView
                         android:id="@+id/text_fname"
-                        app:layout_constraintBottom_toTopOf="@id/edt_fname_register"
+                        app:layout_constraintBottom_toTopOf="@id/txt_fname_profile"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -62,8 +62,8 @@
                         android:textColor="@color/colortext"
                         android:layout_marginStart="@dimen/_5sdp"/>
 
-                    <EditText
-                        android:id="@+id/edt_fname_register"
+                    <TextView
+                        android:id="@+id/txt_fname_profile"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -72,12 +72,11 @@
                         android:textCursorDrawable="@color/black"
                         android:inputType="textPersonName"
                         android:singleLine="true"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="wrap_content"
                         android:textColor="@color/colortext"
                         android:textColorHint="@color/colorHint"
                         android:hint="@string/first_name"
                         android:ems="8"
-                        android:background="@drawable/squared_corner_input_box"
                         android:textSize="@dimen/_14ssp"
                         android:fontFamily="@font/ubunturegular"
                         android:padding="@dimen/_10sdp"
@@ -85,7 +84,7 @@
 
                     <TextView
                         android:id="@+id/text_lname"
-                        app:layout_constraintBottom_toTopOf="@id/edt_lname_register"
+                        app:layout_constraintBottom_toTopOf="@id/txt_lname_profile"
                         app:layout_constraintStart_toEndOf="@id/text_fname"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_width="wrap_content"
@@ -96,9 +95,9 @@
                         android:textColor="@color/colortext"
                         android:layout_marginStart="@dimen/_5sdp"/>
 
-                    <EditText
-                        android:id="@+id/edt_lname_register"
-                        app:layout_constraintStart_toEndOf="@id/edt_fname_register"
+                    <TextView
+                        android:id="@+id/txt_lname_profile"
+                        app:layout_constraintStart_toEndOf="@id/txt_fname_profile"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="0dp"
@@ -106,12 +105,11 @@
                         android:inputType="textPersonName"
                         android:textCursorDrawable="@color/black"
                         android:singleLine="true"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="wrap_content"
                         android:ems="8"
                         android:textColor="@color/colortext"
                         android:textColorHint="@color/colorHint"
                         android:hint="@string/last_name"
-                        android:background="@drawable/squared_corner_input_box"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:textSize="@dimen/_14ssp"
                         android:fontFamily="@font/ubunturegular"
@@ -131,7 +129,7 @@
 
                     <TextView
                         android:id="@+id/text_email"
-                        app:layout_constraintBottom_toTopOf="@id/edt_email_register"
+                        app:layout_constraintBottom_toTopOf="@id/txt_email_profile"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -141,22 +139,20 @@
                         android:textColor="@color/colortext"
                         android:layout_marginStart="@dimen/_5sdp"/>
 
-                    <EditText
-                        android:id="@+id/edt_email_register"
+                    <TextView
+                        android:id="@+id/txt_email_profile"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_width="0dp"
                         android:lines="1"
-                        android:inputType="textEmailAddress"
                         android:singleLine="true"
                         android:textCursorDrawable="@color/black"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="wrap_content"
                         android:textColor="@color/colortext"
                         android:textColorHint="@color/colorHint"
                         android:hint="@string/admin_email_com"
-                        android:background="@drawable/squared_corner_input_box"
                         android:textSize="@dimen/_14ssp"
                         android:fontFamily="@font/ubunturegular"
                         android:padding="@dimen/_10sdp"
@@ -175,7 +171,7 @@
 
                     <TextView
                         android:id="@+id/text_pass"
-                        app:layout_constraintBottom_toTopOf="@id/edt_pass_register"
+                        app:layout_constraintBottom_toTopOf="@id/txt_pass_profile"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -185,8 +181,8 @@
                         android:textColor="@color/colortext"
                         android:layout_marginStart="@dimen/_5sdp"/>
 
-                    <EditText
-                        android:id="@+id/edt_pass_register"
+                    <TextView
+                        android:id="@+id/txt_pass_profile"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -195,12 +191,11 @@
                         android:lines="1"
                         android:inputType="textPassword"
                         android:singleLine="true"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="wrap_content"
                         android:textCursorDrawable="@color/black"
                         android:textColor="@color/colortext"
                         android:textColorHint="@color/colorHint"
                         android:hint="@string/pass"
-                        android:background="@drawable/squared_corner_input_box"
                         android:textSize="@dimen/_14ssp"
                         android:fontFamily="@font/ubunturegular"
                         android:padding="@dimen/_10sdp"
@@ -219,7 +214,7 @@
 
                     <TextView
                         android:id="@+id/text_dob"
-                        app:layout_constraintBottom_toTopOf="@id/edt_dob_register"
+                        app:layout_constraintBottom_toTopOf="@id/txt_dob_profile"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -229,8 +224,8 @@
                         android:textColor="@color/colortext"
                         android:layout_marginStart="@dimen/_5sdp"/>
 
-                    <EditText
-                        android:id="@+id/edt_dob_register"
+                    <TextView
+                        android:id="@+id/txt_dob_profile"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -238,13 +233,12 @@
                         android:lines="1"
                         android:inputType="date"
                         android:singleLine="true"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="wrap_content"
                         android:textColor="@color/colortext"
                         android:textColorHint="@color/colorHint"
                         android:hint="@string/dob"
                         android:textCursorDrawable="@color/black"
                         android:ems="8"
-                        android:background="@drawable/squared_corner_input_box"
                         android:textSize="@dimen/_14ssp"
                         android:fontFamily="@font/ubunturegular"
                         android:padding="@dimen/_10sdp"
@@ -252,7 +246,7 @@
 
                     <TextView
                         android:id="@+id/text_number"
-                        app:layout_constraintBottom_toTopOf="@id/edt_dob_register"
+                        app:layout_constraintBottom_toTopOf="@id/txt_dob_profile"
                         app:layout_constraintStart_toEndOf="@id/text_dob"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_width="wrap_content"
@@ -263,22 +257,21 @@
                         android:textColor="@color/colortext"
                         android:layout_marginStart="@dimen/_27sdp"/>
 
-                    <EditText
-                        android:id="@+id/edt_number"
-                        app:layout_constraintStart_toEndOf="@id/edt_dob_register"
+                    <TextView
+                        android:id="@+id/txt_number"
+                        app:layout_constraintStart_toEndOf="@id/txt_dob_profile"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="0dp"
                         android:lines="1"
                         android:inputType="phone|number"
                         android:singleLine="true"
-                        android:layout_height="@dimen/_50sdp"
+                        android:layout_height="wrap_content"
                         android:ems="8"
                         android:textColor="@color/colortext"
                         android:textColorHint="@color/colorHint"
                         android:textCursorDrawable="@color/black"
                         android:hint="@string/phone_number"
-                        android:background="@drawable/squared_corner_input_box"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:textSize="@dimen/_14ssp"
                         android:fontFamily="@font/ubunturegular"
@@ -286,6 +279,31 @@
                         android:autofillHints="" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    app:layout_constraintTop_toBottomOf="@id/layout_DobnPhone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_box_without_stroke"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_5sdp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_logout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@null"
+                        android:text="@string/log_out"
+                        android:textColor="@color/colorRed"
+                        android:fontFamily="@font/interbold"
+                        android:textSize="@dimen/_13ssp"
+                        android:gravity="center_vertical"/>
+
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

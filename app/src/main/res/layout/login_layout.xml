@@ -196,6 +196,7 @@
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_signin_google"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -203,6 +204,7 @@
                 android:layout_marginBottom="@dimen/_200sdp">
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_google_signin"
                     android:layout_width="@dimen/_250sdp"
                     android:layout_height="@dimen/_50sdp"
                     android:background="@drawable/login_with_google"
@@ -211,7 +213,6 @@
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16ssp"
-
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

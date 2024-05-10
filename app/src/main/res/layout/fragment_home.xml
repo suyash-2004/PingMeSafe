@@ -26,15 +26,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/_50sdp">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/image_profile"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
-            android:background="@drawable/avatar1"
-            android:src="@drawable/avatar3"
+            android:src="@drawable/avatar1"
             android:layout_marginEnd="@dimen/_20sdp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,37 +55,26 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="@dimen/_180sdp"
                 android:layout_height="@dimen/_45sdp"
-                android:src="@drawable/search_bkg" />
+                android:src="@drawable/search_bkg"
+                android:contentDescription="@string/app_name" />
 
-            <ImageView
-                android:id="@+id/imageMailId"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/search"
-                android:tint="@color/colorHint"
-                android:layout_marginStart="@dimen/_8sdp"
-                tools:ignore="UseAppTint" />
-
-            <EditText
-                android:id="@+id/edt_mailid"
-                app:layout_constraintStart_toEndOf="@+id/imageMailId"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_width="@dimen/_170sdp"
-                android:lines="1"
-                android:inputType="textEmailAddress"
-                android:singleLine="true"
-                android:layout_height="@dimen/_50sdp"
-                android:textColor="@color/colortext"
-                android:textColorHint="@color/colorHint"
-                android:hint="Search"
+            <SearchView
+                android:id="@+id/search_view"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_45sdp"
                 android:background="@null"
-                android:layout_marginStart="@dimen/_4sdp"
-                android:textSize="@dimen/_12ssp"
-                android:fontFamily="@font/ubunturegular"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:queryHint="Search"
+                android:focusableInTouchMode="true"
+                android:iconifiedByDefault="false"
+                android:clipToPadding="true"
+                android:padding="-30dp"
+                android:foregroundTint="@color/black"
+                app:guidelineUseRtl="false"
+                android:suggestionRowLayout="@drawable/rounded_box"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

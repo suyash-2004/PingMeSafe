@@ -18,8 +18,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.pingemesafe.R;
+import com.example.pingmesafe.R;
 import com.example.pingmesafe.FireBase.UnSafe_Alert_Model;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.database.DatabaseReference;
@@ -45,7 +46,7 @@ public class Emergency_activity extends AppCompatActivity {
     double longitude;
     private final String deviceName = android.os.Build.MODEL;
     private String SOS_message="";
-    private final String currentTime=getCurrentTime();
+    private String Time;
     private String SOSname;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
 
@@ -57,31 +58,36 @@ public class Emergency_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_emergency);
 
+        Time = getCurrentTime();
+
         btn_SOS = findViewById(R.id.btn_needHelp);
-
-        if(!fileExists("FireBaseAlretID.txt")) {
-
-            alertID = AlertsdatabaseReference.push().getKey();
-
-            createTextFile(this, "FireBaseAlretID.txt", alertID);
-        }else{
-            StringBuilder content = new StringBuilder();
-            try {
-                FileInputStream fis = getApplicationContext().openFileInput("FireBaseAlretID.txt");
-                InputStreamReader isr = new InputStreamReader(fis);
-                BufferedReader br = new BufferedReader(isr);
-                String line;
-                while ((line = br.readLine()) != null) {
-                    content.append(line);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (!fileExists("FireBaseAlretID.txt")) {
+                    alertID = AlertsdatabaseReference.push().getKey();
+                    createTextFile(Emergency_activity.this, "FireBaseAlretID.txt", alertID);
+                } else {
+                    StringBuilder content = new StringBuilder();
+                    try {
+                        FileInputStream fis = getApplicationContext().openFileInput("FireBaseAlretID.txt");
+                        InputStreamReader isr = new InputStreamReader(fis);
+                        BufferedReader br = new BufferedReader(isr);
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            content.append(line);
+                        }
+                        br.close();
+                        isr.close();
+                        fis.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    alertID = content.toString();
                 }
-                br.close();
-                isr.close();
-                fis.close();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-            alertID = content.toString();
-        }
+        }).start();
+
 
         btn_SOS.setOnClickListener(v -> {
             Dialog dialog_SOS = new Dialog(this);
@@ -104,15 +110,22 @@ public class Emergency_activity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                getOnBackPressedDispatcher().onBackPressed();
             }
         });
     }
 
     private String getCurrentTime(){
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        return sdf.format(calendar.getTime());
+        final String[] time = new String[1];
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                time[0] = sdf.format(calendar.getTime());
+            }
+        }).start();
+        return time[0];
     }
 
     private void createTextFile(Emergency_activity context, String fileName, String alertID) {
@@ -131,28 +144,39 @@ public class Emergency_activity extends AppCompatActivity {
     }
 
     private void ShowSOSMessageDialog() {
-        Dialog dialog_SOS_message = new Dialog(this);
-        dialog_SOS_message.setContentView(R.layout.sos_dialog_message);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Dialog dialog_SOS_message = new Dialog(Emergency_activity.this);
+                dialog_SOS_message.setContentView(R.layout.sos_dialog_message);
 
-        dialog_SOS_message.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog_SOS_message.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        EditText SOSMessage = dialog_SOS_message.findViewById(R.id.edt_SOSMsg);
-        EditText name = dialog_SOS_message.findViewById(R.id.edt_name);
-        AppCompatButton btn_send_sos = dialog_SOS_message.findViewById(R.id.btn_send_sos);
+                EditText SOSMessage = dialog_SOS_message.findViewById(R.id.edt_SOSMsg);
+                AppCompatButton btn_send_sos = dialog_SOS_message.findViewById(R.id.btn_send_sos);
 
-        btn_send_sos.setOnClickListener(v1 -> {
-            if(!SOSMessage.getText().toString().isEmpty()){
-               SOS_message = SOSMessage.getText().toString().trim();
-               SOSname = name.getText().toString().trim();
-               getCurrentLocation();
+                btn_send_sos.setOnClickListener(v1 -> {
+                    if(!SOSMessage.getText().toString().isEmpty()){
+                        SOS_message = SOSMessage.getText().toString().trim();
+                        SOSname = GoogleSignIn.getLastSignedInAccount(Emergency_activity.this).getDisplayName();
+                        getCurrentLocation();
+                        SendSOSAlert();
+                    }
+                    dialog_SOS_message.dismiss();
+                });
+                dialog_SOS_message.show();
             }
-            dialog_SOS_message.dismiss();
-        });
-        dialog_SOS_message.show();
+        }).start();
+
     }
 
     private void SendSOSAlert() {
-        AlertsdatabaseReference.child(alertID).setValue(new UnSafe_Alert_Model(latitude, longitude, SOSname, SOS_message, deviceName, currentTime));
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                AlertsdatabaseReference.child(alertID).setValue(new UnSafe_Alert_Model(latitude, longitude, SOSname, SOS_message, deviceName, Time));
+            }
+        }).start();
     }
 
     private void getCurrentLocation() {

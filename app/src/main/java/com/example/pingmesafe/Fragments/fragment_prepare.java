@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.example.pingemesafe.R;
+import com.example.pingmesafe.R;
 import com.example.pingmesafe.Adapters.Disaster;
 import com.example.pingmesafe.Adapters.MyAdapter_prepare;
 
