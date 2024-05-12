@@ -141,14 +141,14 @@
         android:visibility="gone"
         android:background="@color/colorDarkbkgwithTransparency">
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_80sdp"
-            android:layout_centerInParent="true"
-            android:progress="@integer/material_motion_duration_long_1"
-            android:visibility="visible"
-            android:background="@drawable/rounded_box_purple_all_corners_round"/>
+        <pl.droidsonroids.gif.GifTextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/loading_gif"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

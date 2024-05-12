@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.pingmesafe.Activities.Emergency_activity;
@@ -82,7 +84,8 @@ public class fragment_emergency extends Fragment {
             public void run() {
                 if (!fileExists("FireBaseAlretID.txt")) {
                     alertID = AlertsdatabaseReference.push().getKey();
-                    createTextFile("FireBaseAlretID.txt", alertID);
+                    assert alertID != null;
+                    createTextFile(fragment_emergency.this, "FireBaseAlretID.txt", alertID);
                 } else {
                     StringBuilder content = new StringBuilder();
                     try {
@@ -101,7 +104,6 @@ public class fragment_emergency extends Fragment {
                     }
                     alertID = content.toString();
                 }
-
             }
         }).start();
 
@@ -143,11 +145,6 @@ public class fragment_emergency extends Fragment {
                 SOSname = GoogleSignIn.getLastSignedInAccount(requireActivity()).getDisplayName();
                 alertID = fetchAlertID();
                 Time = getCurrentTime();
-
-                double[] coordinates = getCurrentLocation();
-                latitude = coordinates[0];
-                longitude = coordinates[1];
-
                 FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext());
                 SendSOSAlert(fusedLocationClient);
             }
@@ -156,22 +153,17 @@ public class fragment_emergency extends Fragment {
         dialog_SOS_message.show();
     }
 
-    private void createTextFile(String fileName, String alertID) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    FileOutputStream fos = requireContext().openFileOutput(fileName, Context.MODE_PRIVATE);
-                    fos.write(alertID.getBytes());
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+    private void createTextFile(fragment_emergency context, String fileName, String alertID) {
+        try {
+            FileOutputStream fos = context.requireActivity().openFileOutput(fileName, Context.MODE_PRIVATE);
+            fos.write(alertID.getBytes());
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private boolean fileExists(String fileName) {
+    public boolean fileExists(String fileName) {
         File file = new File(requireContext().getFilesDir(), fileName);
         return file.exists();
     }
@@ -192,23 +184,6 @@ public class fragment_emergency extends Fragment {
         }
     }
 
-    private double[] getCurrentLocation() {
-        double[] coordinates = new double[2];
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
-        } else {
-            FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext());
-            fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(requireActivity(), location -> {
-                        if (location != null) {
-                            coordinates[0] = location.getLatitude();
-                            coordinates[1] = location.getLongitude();
-                        }
-                    });
-        }
-        return coordinates;
-    }
 
     public String fetchAlertID() {
         StringBuilder content = new StringBuilder();

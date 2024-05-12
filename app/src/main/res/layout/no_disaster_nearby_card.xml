@@ -8,7 +8,7 @@
     android:orientation="vertical"
     app:cardBackgroundColor="@color/colorPurple"
     android:background="@drawable/swipable_menu_bkg_curved"
-    android:id="@+id/layoutBottomSheet"
+    android:id="@+id/layoutcard"
     android:paddingTop="@dimen/_10sdp"
     android:layout_marginEnd="@dimen/_20sdp"
     android:layout_marginStart="@dimen/_20sdp"
@@ -19,60 +19,19 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/_5sdp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="@dimen/_37sdp"
-            android:layout_marginEnd="@dimen/_6sdp"
-            android:layout_marginStart="@dimen/_30sdp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View all"
-                android:id="@+id/txt_viewall"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/image_next"
-                />
-
-            <ImageView
-                android:id="@+id/image_next"
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:background="@drawable/purple_circle"
-                android:contentDescription="@string/app_name"
-                android:rotation="180"
-                android:src="@drawable/arrow_foreground"
-                app:tint="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/txt_viewall"
-                android:layout_marginEnd="@dimen/_5sdp"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/layoutDetails"
-            android:layout_width="@dimen/_55sdp"
-            android:layout_height="@dimen/_55sdp"
-            android:tint="@color/colorRed"
-            android:src="@drawable/warning_foreground"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:src="@drawable/safe_icon"
             android:background="@null"
             android:scaleX="1.2"
-            android:scaleY="1.2"/>
+            android:scaleY="1.2"
+            android:layout_marginStart="@dimen/_20sdp"/>
 
         <LinearLayout
             android:id="@+id/layoutDetails"
@@ -83,44 +42,42 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp">
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginStart="@dimen/_20sdp">
 
             <TextView
-                android:id="@+id/disaster_name"
-                android:layout_width="@dimen/_99sdp"
+                android:id="@+id/txt_relax"
+                android:layout_width="wrap_content"
                 android:maxLength="10"
                 android:layout_height="wrap_content"
-                android:text="Earthquake"
+                android:text="Relax !!"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_20ssp"
                 android:fontFamily="@font/ubuntubold"
-                android:layout_marginBottom="@dimen/_7sdp"/>
+                />
 
             <TextView
-                android:id="@+id/disaster_details"
+                android:id="@+id/txt_yoursafe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Clement Town"
-                android:maxLength="23"
+                android:text="You're Safe"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_15ssp"
                 android:fontFamily="@font/ubunturegular" />
 
             <TextView
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/layoutDetails"
+                app:layout_constraintStart_toEndOf="@+id/txt_nocalamitynearby"
                 app:layout_constraintTop_toTopOf="parent"
                 android:id="@+id/disaster_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2 hours Ago"
+                android:text="No Calamities Nearby"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14ssp"
                 android:fontFamily="@font/ubunturegular" />
         </LinearLayout>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

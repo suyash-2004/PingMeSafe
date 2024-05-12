@@ -14,11 +14,53 @@
         android:layout_height="match_parent" />
 
     <include layout="@layout/recent_disaster_info_card"
-        android:id="@+id/recent_disasters"
+        android:id="@+id/recent_disasters_card"
         android:layout_gravity="bottom|center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_100sdp"/>
+        android:layout_marginBottom="@dimen/_100sdp"
+        android:visibility="gone"/>
+
+    <include layout="@layout/no_disaster_nearby_card"
+        android:id="@+id/no_disaster_card"
+        android:layout_gravity="bottom|center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_100sdp"
+        android:visibility="gone"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_loading_disaster_nearby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/_80sdp"
+        android:gravity="center_horizontal">
+
+        <View
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/bkg_loading"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/rounded_box" />
+
+        <pl.droidsonroids.gif.GifTextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/loading_round"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"

@@ -51,6 +51,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.appcheck.FirebaseAppCheck;
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -93,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setContentView(R.layout.activity_main);
 
-        //FirebaseApp.initializeApp(this);
         latitude = 0;
         longitude=0;
 
@@ -192,39 +193,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // Check condition
         if (requestCode == 100) {
-            // When request code is equal to 100 initialize task
             Task<GoogleSignInAccount> signInAccountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
-            // check condition
             if (signInAccountTask.isSuccessful()) {
-                // When google sign in successful initialize string
-                String s = "Google sign in successful";
-                // Display Toast
-                displayToast(s);
-                // Initialize sign in account
+
                 try {
-                    // Initialize sign in account
                     GoogleSignInAccount googleSignInAccount = signInAccountTask.getResult(ApiException.class);
-                    // Check condition
                     if (googleSignInAccount != null) {
                         account = googleSignInAccount;
-                        // When sign in account is not equal to null initialize auth credential
                         AuthCredential authCredential = GoogleAuthProvider.getCredential(googleSignInAccount.getIdToken(), null);
-                        // Start a new thread to perform Firebase authentication
                                 firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                        // Check condition
                                         if (task.isSuccessful()) {
                                             sendUserDatatoDB(account.getDisplayName().split(" ")[0], account.getDisplayName().split(" ")[1], account.getEmail(), latitude, longitude, account.getPhotoUrl());
                                             progressBar_layout.setVisibility(View.VISIBLE);
                                             Intent intent = new Intent(MainActivity.this, HomeScreen_Activity.class);
-                                            intent.putExtra("signInMethod","Google");
-                                            intent.putExtra("GoogleAccount",account);
-                                            Toast.makeText(MainActivity.this, "intent sent", Toast.LENGTH_SHORT).show();
                                             startActivity(intent);
-                                            displayToast("Firebase authentication successful");
+                                            displayToast("Signed in as "+account.getDisplayName());
                                         } else {
                                             displayToast("Authentication Failed :" + task.getException().getMessage());
                                         }

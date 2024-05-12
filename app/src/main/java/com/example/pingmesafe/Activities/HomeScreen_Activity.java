@@ -11,12 +11,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.example.pingmesafe.FireBase.User_Data_Model;
+import com.example.pingmesafe.MainActivity;
 import com.example.pingmesafe.R;
 import com.example.pingmesafe.Adapters.MyAdapter;
 import com.example.pingmesafe.Fragments.fragment_emergency;
@@ -49,7 +52,7 @@ public class HomeScreen_Activity extends AppCompatActivity {
     private DatabaseReference userDatabaseReference;
     private DatabaseReference userDatabaseReference_Google;
 
-    private BottomNavigationView navView;
+    public BottomNavigationView navView;
     private RecyclerView recyclerView;
     int profileimage;
     private MyAdapter adapter;
@@ -75,7 +78,8 @@ public class HomeScreen_Activity extends AppCompatActivity {
             getUserDataFromDatabase(userId);
             //setProfilePic(profileimage);
         } else {
-            // User is not signed in, handle accordingly (e.g., redirect to login screen)
+            startActivity(new Intent(HomeScreen_Activity.this, MainActivity.class));
+            finish();
         }
 
         userId = getUserId();
@@ -118,8 +122,6 @@ public class HomeScreen_Activity extends AppCompatActivity {
             }
         });
     }
-
-
     private void setupUI() {
         sosFab = findViewById(R.id.fab);
         appBar = findViewById(R.id.bottomAppBar);

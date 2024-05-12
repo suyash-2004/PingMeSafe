@@ -72,7 +72,14 @@ dependencies {
     implementation ("com.squareup.picasso:picasso:2.71828")
     implementation ("com.google.android.gms:play-services-auth:21.1.1")
     implementation ("androidx.credentials:credentials:1.3.0-alpha03")
+    implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.10")
 
+    // Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+
+    // Add the dependencies for the App Check libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-appcheck-playintegrity")
     // optional - needed for credentials support from play services, for devices running
     // Android 13 and below.
     implementation ("androidx.credentials:credentials-play-services-auth:1.3.0-alpha03")
