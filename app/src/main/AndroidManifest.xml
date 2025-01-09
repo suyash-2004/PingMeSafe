@@ -33,7 +33,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDbsSVsFwNqPjo7IiwprmzrosCGN5CmjYY" />
+            android:value="<GOOGLE_MAPS_API_KEY>" />
 
         <activity
             android:name=".Activities.Emergency_activity"
