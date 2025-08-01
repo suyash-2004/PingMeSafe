@@ -8,7 +8,7 @@ PingMeSafe is a comprehensive disaster recovery platform designed to provide ind
 - **Online and Offline Functionality**:  Seamlessly access vital information and services both online and offline, ensuring accessibility even in low-connectivity areas.
 - **Temporary and Permanent Shelters**: Locate temporary disaster shelters available for a limited period and verified permanent disaster shelters for reliable refuge.
 - **User Safety Alerts**: Mark yourself as safe within disaster radiuses and receive real-time alerts and updates on ongoing emergencies.
-- **Global Coverage**: Enjoy global coverage, ensuring accessibility and assistance to users worldwide for various types of disasters and emergencies.
+- **Global Coverage**:  Enjoy global coverage, ensuring accessibility and assistance to users worldwide for various types of disasters and emergencies.
 
 ## Getting Started
 
